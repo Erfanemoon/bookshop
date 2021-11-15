@@ -1,0 +1,30 @@
+syntax = "proto3";
+package erfan.codes.bookshop.proto.holder;
+
+message BookList{
+  int32 status = 1;
+  int32 code = 2;
+  string msg = 3;
+  repeated Book data = 4;
+}
+
+message Book {
+  string id = 1;
+  string barcode = 2;
+  string author = 3;
+  string name = 4;
+  int64 price = 5;
+  int64 quantity = 6;
+}
+
+message addBook{
+  int32 status = 1;
+  int32 code = 2;
+  string msg = 3;
+  Book book = 4;
+}
+
+
+// from project root directory
+// cd erfan.codes.bookshop.proto/
+//protoc -I=src/main/java/erfan/codes/bookshop/proto/ --java_out=src/main/java/ src/main/java/erfan/codes/bookshop/proto/BookGlobalV1.proto
