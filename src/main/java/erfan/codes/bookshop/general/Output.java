@@ -1,10 +1,9 @@
 package erfan.codes.bookshop.general;
 
-import com.google.protobuf.Message;
-import com.googlecode.protobuf.format.JsonFormat;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.google.protobuf.Message;
+import com.googlecode.protobuf.format.JsonFormat;
 import erfan.codes.bookshop.enums.IReturn_Status_Codes;
 import org.springframework.http.MediaType;
 import org.springframework.util.MimeTypeUtils;
@@ -170,7 +169,7 @@ public class Output {
     public <T> T returnResponseObject(T t, int status, String msg) {
         com.google.protobuf.Message.Builder builder = (com.google.protobuf.Message.Builder) t;
         builder.setField(builder.getDescriptorForType().findFieldByName("status"), status);
-        builder.setField(builder.getDescriptorForType().findFieldByName("msg"), msg);
+        builder.setField(builder.getDescriptorForType().findFieldByName("message"), msg);
         //TODO check this line later
         return (T) builder;
     }

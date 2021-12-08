@@ -1381,14 +1381,14 @@ public final class Global {
     int getCode();
 
     /**
-     * <code>string msg = 3;</code>
+     * <code>string message = 3;</code>
      */
-    java.lang.String getMsg();
+    java.lang.String getMessage();
     /**
-     * <code>string msg = 3;</code>
+     * <code>string message = 3;</code>
      */
     com.google.protobuf.ByteString
-        getMsgBytes();
+        getMessageBytes();
   }
   /**
    * Protobuf type {@code erfan.codes.bookshop.proto.holder.service_return}
@@ -1405,7 +1405,7 @@ public final class Global {
     private service_return() {
       status_ = 0;
       code_ = 0;
-      msg_ = "";
+      message_ = "";
     }
 
     @java.lang.Override
@@ -1445,7 +1445,7 @@ public final class Global {
             case 26: {
               java.lang.String s = input.readStringRequireUtf8();
 
-              msg_ = s;
+              message_ = s;
               break;
             }
             default: {
@@ -1498,34 +1498,34 @@ public final class Global {
       return code_;
     }
 
-    public static final int MSG_FIELD_NUMBER = 3;
-    private volatile java.lang.Object msg_;
+    public static final int MESSAGE_FIELD_NUMBER = 3;
+    private volatile java.lang.Object message_;
     /**
-     * <code>string msg = 3;</code>
+     * <code>string message = 3;</code>
      */
-    public java.lang.String getMsg() {
-      java.lang.Object ref = msg_;
+    public java.lang.String getMessage() {
+      java.lang.Object ref = message_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
         com.google.protobuf.ByteString bs = 
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
-        msg_ = s;
+        message_ = s;
         return s;
       }
     }
     /**
-     * <code>string msg = 3;</code>
+     * <code>string message = 3;</code>
      */
     public com.google.protobuf.ByteString
-        getMsgBytes() {
-      java.lang.Object ref = msg_;
+        getMessageBytes() {
+      java.lang.Object ref = message_;
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        msg_ = b;
+        message_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
@@ -1552,8 +1552,8 @@ public final class Global {
       if (code_ != 0) {
         output.writeInt32(2, code_);
       }
-      if (!getMsgBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, msg_);
+      if (!getMessageBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, message_);
       }
       unknownFields.writeTo(output);
     }
@@ -1572,8 +1572,8 @@ public final class Global {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(2, code_);
       }
-      if (!getMsgBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, msg_);
+      if (!getMessageBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, message_);
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -1595,8 +1595,8 @@ public final class Global {
           == other.getStatus());
       result = result && (getCode()
           == other.getCode());
-      result = result && getMsg()
-          .equals(other.getMsg());
+      result = result && getMessage()
+          .equals(other.getMessage());
       result = result && unknownFields.equals(other.unknownFields);
       return result;
     }
@@ -1612,8 +1612,8 @@ public final class Global {
       hash = (53 * hash) + getStatus();
       hash = (37 * hash) + CODE_FIELD_NUMBER;
       hash = (53 * hash) + getCode();
-      hash = (37 * hash) + MSG_FIELD_NUMBER;
-      hash = (53 * hash) + getMsg().hashCode();
+      hash = (37 * hash) + MESSAGE_FIELD_NUMBER;
+      hash = (53 * hash) + getMessage().hashCode();
       hash = (29 * hash) + unknownFields.hashCode();
       memoizedHashCode = hash;
       return hash;
@@ -1751,7 +1751,7 @@ public final class Global {
 
         code_ = 0;
 
-        msg_ = "";
+        message_ = "";
 
         return this;
       }
@@ -1781,7 +1781,7 @@ public final class Global {
         erfan.codes.bookshop.proto.holder.Global.service_return result = new erfan.codes.bookshop.proto.holder.Global.service_return(this);
         result.status_ = status_;
         result.code_ = code_;
-        result.msg_ = msg_;
+        result.message_ = message_;
         onBuilt();
         return result;
       }
@@ -1836,8 +1836,8 @@ public final class Global {
         if (other.getCode() != 0) {
           setCode(other.getCode());
         }
-        if (!other.getMsg().isEmpty()) {
-          msg_ = other.msg_;
+        if (!other.getMessage().isEmpty()) {
+          message_ = other.message_;
           onChanged();
         }
         this.mergeUnknownFields(other.unknownFields);
@@ -1921,71 +1921,71 @@ public final class Global {
         return this;
       }
 
-      private java.lang.Object msg_ = "";
+      private java.lang.Object message_ = "";
       /**
-       * <code>string msg = 3;</code>
+       * <code>string message = 3;</code>
        */
-      public java.lang.String getMsg() {
-        java.lang.Object ref = msg_;
+      public java.lang.String getMessage() {
+        java.lang.Object ref = message_;
         if (!(ref instanceof java.lang.String)) {
           com.google.protobuf.ByteString bs =
               (com.google.protobuf.ByteString) ref;
           java.lang.String s = bs.toStringUtf8();
-          msg_ = s;
+          message_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>string msg = 3;</code>
+       * <code>string message = 3;</code>
        */
       public com.google.protobuf.ByteString
-          getMsgBytes() {
-        java.lang.Object ref = msg_;
+          getMessageBytes() {
+        java.lang.Object ref = message_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          msg_ = b;
+          message_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
         }
       }
       /**
-       * <code>string msg = 3;</code>
+       * <code>string message = 3;</code>
        */
-      public Builder setMsg(
+      public Builder setMessage(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
   
-        msg_ = value;
+        message_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string msg = 3;</code>
+       * <code>string message = 3;</code>
        */
-      public Builder clearMsg() {
+      public Builder clearMessage() {
         
-        msg_ = getDefaultInstance().getMsg();
+        message_ = getDefaultInstance().getMessage();
         onChanged();
         return this;
       }
       /**
-       * <code>string msg = 3;</code>
+       * <code>string message = 3;</code>
        */
-      public Builder setMsgBytes(
+      public Builder setMessageBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   checkByteStringIsUtf8(value);
         
-        msg_ = value;
+        message_ = value;
         onChanged();
         return this;
       }
@@ -2042,6 +2042,885 @@ public final class Global {
 
   }
 
+  public interface SessionModelOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:erfan.codes.bookshop.proto.holder.SessionModel)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>int64 userId = 1;</code>
+     */
+    long getUserId();
+
+    /**
+     * <code>string sessionId = 2;</code>
+     */
+    java.lang.String getSessionId();
+    /**
+     * <code>string sessionId = 2;</code>
+     */
+    com.google.protobuf.ByteString
+        getSessionIdBytes();
+
+    /**
+     * <code>int64 registerDate = 3;</code>
+     */
+    long getRegisterDate();
+
+    /**
+     * <code>int64 validUntil = 4;</code>
+     */
+    long getValidUntil();
+
+    /**
+     * <code>string sessionType = 5;</code>
+     */
+    java.lang.String getSessionType();
+    /**
+     * <code>string sessionType = 5;</code>
+     */
+    com.google.protobuf.ByteString
+        getSessionTypeBytes();
+  }
+  /**
+   * Protobuf type {@code erfan.codes.bookshop.proto.holder.SessionModel}
+   */
+  public  static final class SessionModel extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:erfan.codes.bookshop.proto.holder.SessionModel)
+      SessionModelOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use SessionModel.newBuilder() to construct.
+    private SessionModel(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private SessionModel() {
+      userId_ = 0L;
+      sessionId_ = "";
+      registerDate_ = 0L;
+      validUntil_ = 0L;
+      sessionType_ = "";
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private SessionModel(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              userId_ = input.readInt64();
+              break;
+            }
+            case 18: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              sessionId_ = s;
+              break;
+            }
+            case 24: {
+
+              registerDate_ = input.readInt64();
+              break;
+            }
+            case 32: {
+
+              validUntil_ = input.readInt64();
+              break;
+            }
+            case 42: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              sessionType_ = s;
+              break;
+            }
+            default: {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return erfan.codes.bookshop.proto.holder.Global.internal_static_erfan_codes_bookshop_proto_holder_SessionModel_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return erfan.codes.bookshop.proto.holder.Global.internal_static_erfan_codes_bookshop_proto_holder_SessionModel_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              erfan.codes.bookshop.proto.holder.Global.SessionModel.class, erfan.codes.bookshop.proto.holder.Global.SessionModel.Builder.class);
+    }
+
+    public static final int USERID_FIELD_NUMBER = 1;
+    private long userId_;
+    /**
+     * <code>int64 userId = 1;</code>
+     */
+    public long getUserId() {
+      return userId_;
+    }
+
+    public static final int SESSIONID_FIELD_NUMBER = 2;
+    private volatile java.lang.Object sessionId_;
+    /**
+     * <code>string sessionId = 2;</code>
+     */
+    public java.lang.String getSessionId() {
+      java.lang.Object ref = sessionId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        sessionId_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string sessionId = 2;</code>
+     */
+    public com.google.protobuf.ByteString
+        getSessionIdBytes() {
+      java.lang.Object ref = sessionId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        sessionId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int REGISTERDATE_FIELD_NUMBER = 3;
+    private long registerDate_;
+    /**
+     * <code>int64 registerDate = 3;</code>
+     */
+    public long getRegisterDate() {
+      return registerDate_;
+    }
+
+    public static final int VALIDUNTIL_FIELD_NUMBER = 4;
+    private long validUntil_;
+    /**
+     * <code>int64 validUntil = 4;</code>
+     */
+    public long getValidUntil() {
+      return validUntil_;
+    }
+
+    public static final int SESSIONTYPE_FIELD_NUMBER = 5;
+    private volatile java.lang.Object sessionType_;
+    /**
+     * <code>string sessionType = 5;</code>
+     */
+    public java.lang.String getSessionType() {
+      java.lang.Object ref = sessionType_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        sessionType_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string sessionType = 5;</code>
+     */
+    public com.google.protobuf.ByteString
+        getSessionTypeBytes() {
+      java.lang.Object ref = sessionType_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        sessionType_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (userId_ != 0L) {
+        output.writeInt64(1, userId_);
+      }
+      if (!getSessionIdBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 2, sessionId_);
+      }
+      if (registerDate_ != 0L) {
+        output.writeInt64(3, registerDate_);
+      }
+      if (validUntil_ != 0L) {
+        output.writeInt64(4, validUntil_);
+      }
+      if (!getSessionTypeBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 5, sessionType_);
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (userId_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(1, userId_);
+      }
+      if (!getSessionIdBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, sessionId_);
+      }
+      if (registerDate_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(3, registerDate_);
+      }
+      if (validUntil_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(4, validUntil_);
+      }
+      if (!getSessionTypeBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(5, sessionType_);
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof erfan.codes.bookshop.proto.holder.Global.SessionModel)) {
+        return super.equals(obj);
+      }
+      erfan.codes.bookshop.proto.holder.Global.SessionModel other = (erfan.codes.bookshop.proto.holder.Global.SessionModel) obj;
+
+      boolean result = true;
+      result = result && (getUserId()
+          == other.getUserId());
+      result = result && getSessionId()
+          .equals(other.getSessionId());
+      result = result && (getRegisterDate()
+          == other.getRegisterDate());
+      result = result && (getValidUntil()
+          == other.getValidUntil());
+      result = result && getSessionType()
+          .equals(other.getSessionType());
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + USERID_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getUserId());
+      hash = (37 * hash) + SESSIONID_FIELD_NUMBER;
+      hash = (53 * hash) + getSessionId().hashCode();
+      hash = (37 * hash) + REGISTERDATE_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getRegisterDate());
+      hash = (37 * hash) + VALIDUNTIL_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getValidUntil());
+      hash = (37 * hash) + SESSIONTYPE_FIELD_NUMBER;
+      hash = (53 * hash) + getSessionType().hashCode();
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static erfan.codes.bookshop.proto.holder.Global.SessionModel parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static erfan.codes.bookshop.proto.holder.Global.SessionModel parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static erfan.codes.bookshop.proto.holder.Global.SessionModel parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static erfan.codes.bookshop.proto.holder.Global.SessionModel parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static erfan.codes.bookshop.proto.holder.Global.SessionModel parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static erfan.codes.bookshop.proto.holder.Global.SessionModel parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static erfan.codes.bookshop.proto.holder.Global.SessionModel parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static erfan.codes.bookshop.proto.holder.Global.SessionModel parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static erfan.codes.bookshop.proto.holder.Global.SessionModel parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static erfan.codes.bookshop.proto.holder.Global.SessionModel parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static erfan.codes.bookshop.proto.holder.Global.SessionModel parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static erfan.codes.bookshop.proto.holder.Global.SessionModel parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(erfan.codes.bookshop.proto.holder.Global.SessionModel prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code erfan.codes.bookshop.proto.holder.SessionModel}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:erfan.codes.bookshop.proto.holder.SessionModel)
+        erfan.codes.bookshop.proto.holder.Global.SessionModelOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return erfan.codes.bookshop.proto.holder.Global.internal_static_erfan_codes_bookshop_proto_holder_SessionModel_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return erfan.codes.bookshop.proto.holder.Global.internal_static_erfan_codes_bookshop_proto_holder_SessionModel_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                erfan.codes.bookshop.proto.holder.Global.SessionModel.class, erfan.codes.bookshop.proto.holder.Global.SessionModel.Builder.class);
+      }
+
+      // Construct using erfan.codes.bookshop.proto.holder.Global.SessionModel.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        userId_ = 0L;
+
+        sessionId_ = "";
+
+        registerDate_ = 0L;
+
+        validUntil_ = 0L;
+
+        sessionType_ = "";
+
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return erfan.codes.bookshop.proto.holder.Global.internal_static_erfan_codes_bookshop_proto_holder_SessionModel_descriptor;
+      }
+
+      @java.lang.Override
+      public erfan.codes.bookshop.proto.holder.Global.SessionModel getDefaultInstanceForType() {
+        return erfan.codes.bookshop.proto.holder.Global.SessionModel.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public erfan.codes.bookshop.proto.holder.Global.SessionModel build() {
+        erfan.codes.bookshop.proto.holder.Global.SessionModel result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public erfan.codes.bookshop.proto.holder.Global.SessionModel buildPartial() {
+        erfan.codes.bookshop.proto.holder.Global.SessionModel result = new erfan.codes.bookshop.proto.holder.Global.SessionModel(this);
+        result.userId_ = userId_;
+        result.sessionId_ = sessionId_;
+        result.registerDate_ = registerDate_;
+        result.validUntil_ = validUntil_;
+        result.sessionType_ = sessionType_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof erfan.codes.bookshop.proto.holder.Global.SessionModel) {
+          return mergeFrom((erfan.codes.bookshop.proto.holder.Global.SessionModel)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(erfan.codes.bookshop.proto.holder.Global.SessionModel other) {
+        if (other == erfan.codes.bookshop.proto.holder.Global.SessionModel.getDefaultInstance()) return this;
+        if (other.getUserId() != 0L) {
+          setUserId(other.getUserId());
+        }
+        if (!other.getSessionId().isEmpty()) {
+          sessionId_ = other.sessionId_;
+          onChanged();
+        }
+        if (other.getRegisterDate() != 0L) {
+          setRegisterDate(other.getRegisterDate());
+        }
+        if (other.getValidUntil() != 0L) {
+          setValidUntil(other.getValidUntil());
+        }
+        if (!other.getSessionType().isEmpty()) {
+          sessionType_ = other.sessionType_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        erfan.codes.bookshop.proto.holder.Global.SessionModel parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (erfan.codes.bookshop.proto.holder.Global.SessionModel) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private long userId_ ;
+      /**
+       * <code>int64 userId = 1;</code>
+       */
+      public long getUserId() {
+        return userId_;
+      }
+      /**
+       * <code>int64 userId = 1;</code>
+       */
+      public Builder setUserId(long value) {
+        
+        userId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int64 userId = 1;</code>
+       */
+      public Builder clearUserId() {
+        
+        userId_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object sessionId_ = "";
+      /**
+       * <code>string sessionId = 2;</code>
+       */
+      public java.lang.String getSessionId() {
+        java.lang.Object ref = sessionId_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          sessionId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string sessionId = 2;</code>
+       */
+      public com.google.protobuf.ByteString
+          getSessionIdBytes() {
+        java.lang.Object ref = sessionId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          sessionId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string sessionId = 2;</code>
+       */
+      public Builder setSessionId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        sessionId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string sessionId = 2;</code>
+       */
+      public Builder clearSessionId() {
+        
+        sessionId_ = getDefaultInstance().getSessionId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string sessionId = 2;</code>
+       */
+      public Builder setSessionIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        sessionId_ = value;
+        onChanged();
+        return this;
+      }
+
+      private long registerDate_ ;
+      /**
+       * <code>int64 registerDate = 3;</code>
+       */
+      public long getRegisterDate() {
+        return registerDate_;
+      }
+      /**
+       * <code>int64 registerDate = 3;</code>
+       */
+      public Builder setRegisterDate(long value) {
+        
+        registerDate_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int64 registerDate = 3;</code>
+       */
+      public Builder clearRegisterDate() {
+        
+        registerDate_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private long validUntil_ ;
+      /**
+       * <code>int64 validUntil = 4;</code>
+       */
+      public long getValidUntil() {
+        return validUntil_;
+      }
+      /**
+       * <code>int64 validUntil = 4;</code>
+       */
+      public Builder setValidUntil(long value) {
+        
+        validUntil_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int64 validUntil = 4;</code>
+       */
+      public Builder clearValidUntil() {
+        
+        validUntil_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object sessionType_ = "";
+      /**
+       * <code>string sessionType = 5;</code>
+       */
+      public java.lang.String getSessionType() {
+        java.lang.Object ref = sessionType_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          sessionType_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string sessionType = 5;</code>
+       */
+      public com.google.protobuf.ByteString
+          getSessionTypeBytes() {
+        java.lang.Object ref = sessionType_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          sessionType_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string sessionType = 5;</code>
+       */
+      public Builder setSessionType(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        sessionType_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string sessionType = 5;</code>
+       */
+      public Builder clearSessionType() {
+        
+        sessionType_ = getDefaultInstance().getSessionType();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string sessionType = 5;</code>
+       */
+      public Builder setSessionTypeBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        sessionType_ = value;
+        onChanged();
+        return this;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFieldsProto3(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:erfan.codes.bookshop.proto.holder.SessionModel)
+    }
+
+    // @@protoc_insertion_point(class_scope:erfan.codes.bookshop.proto.holder.SessionModel)
+    private static final erfan.codes.bookshop.proto.holder.Global.SessionModel DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new erfan.codes.bookshop.proto.holder.Global.SessionModel();
+    }
+
+    public static erfan.codes.bookshop.proto.holder.Global.SessionModel getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<SessionModel>
+        PARSER = new com.google.protobuf.AbstractParser<SessionModel>() {
+      @java.lang.Override
+      public SessionModel parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new SessionModel(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<SessionModel> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<SessionModel> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public erfan.codes.bookshop.proto.holder.Global.SessionModel getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_erfan_codes_bookshop_proto_holder_NoProtocolBufferReturn_descriptor;
   private static final 
@@ -2057,6 +2936,11 @@ public final class Global {
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_erfan_codes_bookshop_proto_holder_service_return_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_erfan_codes_bookshop_proto_holder_SessionModel_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_erfan_codes_bookshop_proto_holder_SessionModel_fieldAccessorTable;
 
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -2070,9 +2954,12 @@ public final class Global {
       "to.holder\"C\n\026NoProtocolBufferReturn\022\016\n\006s" +
       "tatus\030\001 \001(\005\022\014\n\004code\030\002 \001(\005\022\013\n\003msg\030\003 \001(\t\"<" +
       "\n\017UnHandledReturn\022\016\n\006status\030\001 \001(\005\022\014\n\004cod" +
-      "e\030\002 \001(\005\022\013\n\003msg\030\003 \001(\t\";\n\016service_return\022\016" +
-      "\n\006status\030\001 \001(\005\022\014\n\004code\030\002 \001(\005\022\013\n\003msg\030\003 \001(" +
-      "\tb\006proto3"
+      "e\030\002 \001(\005\022\013\n\003msg\030\003 \001(\t\"?\n\016service_return\022\016" +
+      "\n\006status\030\001 \001(\005\022\014\n\004code\030\002 \001(\005\022\017\n\007message\030" +
+      "\003 \001(\t\"p\n\014SessionModel\022\016\n\006userId\030\001 \001(\003\022\021\n" +
+      "\tsessionId\030\002 \001(\t\022\024\n\014registerDate\030\003 \001(\003\022\022" +
+      "\n\nvalidUntil\030\004 \001(\003\022\023\n\013sessionType\030\005 \001(\tb" +
+      "\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -2103,7 +2990,13 @@ public final class Global {
     internal_static_erfan_codes_bookshop_proto_holder_service_return_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_erfan_codes_bookshop_proto_holder_service_return_descriptor,
-        new java.lang.String[] { "Status", "Code", "Msg", });
+        new java.lang.String[] { "Status", "Code", "Message", });
+    internal_static_erfan_codes_bookshop_proto_holder_SessionModel_descriptor =
+      getDescriptor().getMessageTypes().get(3);
+    internal_static_erfan_codes_bookshop_proto_holder_SessionModel_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_erfan_codes_bookshop_proto_holder_SessionModel_descriptor,
+        new java.lang.String[] { "UserId", "SessionId", "RegisterDate", "ValidUntil", "SessionType", });
   }
 
   // @@protoc_insertion_point(outer_class_scope)

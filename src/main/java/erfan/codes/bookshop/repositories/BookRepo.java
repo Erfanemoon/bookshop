@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import java.util.List;
 
 @Repository
@@ -14,7 +15,6 @@ public class BookRepo extends ObjectRepo<BookEntity> {
 
     public BookRepo(EntityManager em) {
         super(em);
-        this.criteria = new Criteria<>(BookEntity.class, this.getSession());
     }
 
     @Override
@@ -25,6 +25,7 @@ public class BookRepo extends ObjectRepo<BookEntity> {
 
     @Transactional
     public List<BookEntity> findByBarcode(String barcode) {
+        this.criteria = new Criteria<>(BookEntity.class, this.getSession());
         this.criteria.cQuery().select(criteria.root()).
                 where(criteria.cBuilder().equal(criteria.root().get(Fields.BARCODE.getValue()), barcode));
 

@@ -1,4 +1,4 @@
-package erfan.codes.bookshop.controller;
+package erfan.codes.bookshop.controller.books;
 
 import erfan.codes.bookshop.enums.Return_Status_Codes;
 import erfan.codes.bookshop.models.AddBookModel;
@@ -8,10 +8,8 @@ import erfan.codes.bookshop.repositories.entities.BookEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
-
 @Component
-public class BooksPanelServiceImpl implements BooksPanelService {
+public class BooksPanelServiceImpl implements IBooksPanelService {
 
     private final BookRepo bookRepo;
 
@@ -25,7 +23,7 @@ public class BooksPanelServiceImpl implements BooksPanelService {
         BookGlobalV1.addBook.Builder ret = BookGlobalV1.addBook.newBuilder();
         if (addBookModel.getReturn_status_code().getStatus() != Return_Status_Codes.OK_VALID_FORM.getStatus())
             return addBookModel.getOutput().returnResponseObject(ret, addBookModel.getReturn_status_code());
-        //TODO implement hibernate codes here
+
         BookEntity book = new BookEntity(addBookModel.getBarcode(), addBookModel.getName(), addBookModel.getAuthor(),
                 addBookModel.getPrice(), addBookModel.getQuantity());
         try {

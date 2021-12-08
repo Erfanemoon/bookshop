@@ -1,0 +1,30 @@
+syntax = "proto3";
+package erfan.codes.bookshop.proto.holder;
+
+message Subscriber{
+  int64 id = 1;
+  string firstname = 2;
+  string lastname = 3;
+  string username = 4;
+  string password = 5;
+  string address = 6;
+  string phone = 7;
+  string email = 8;
+}
+
+message addSubscriber{
+  int32 status = 1;
+  int32 code = 2;
+  string message = 3;
+  Subscriber subscriber = 4;
+}
+
+message loginSubscriber{
+  int32 status = 1;
+  int32 code = 2;
+  string message = 3;
+  Subscriber subscriber = 4;
+}
+
+// cd erfan.codes.bookshop.proto/
+//protoc -I=src/main/java/erfan/codes/bookshop/proto/ --java_out=src/main/java/ src/main/java/erfan/codes/bookshop/proto/SubscriberGlobalV1.proto

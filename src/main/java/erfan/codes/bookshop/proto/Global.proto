@@ -16,9 +16,18 @@ message UnHandledReturn {
 message service_return {
   int32 status = 1;
   int32 code = 2;
-  string msg = 3;
+  string message = 3;
+}
+
+
+message SessionModel{
+  int64 userId = 1;
+  string sessionId = 2;
+  int64 registerDate = 3;
+  int64 validUntil = 4;
+  string sessionType = 5;
 }
 
 
 // cd erfan.codes.bookshop.proto/
-//protoc -I=src/main/java/erfan/codes/bookshop/proto/ --java_out=src/main/java/ src/main/java/erfan/codes/bookshop/proto/BookGlobalV1.proto
+//protoc -I=src/main/java/erfan/codes/bookshop/proto/ --java_out=src/main/java/ src/main/java/erfan/codes/bookshop/proto/Global.proto

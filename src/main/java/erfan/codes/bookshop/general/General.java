@@ -4,11 +4,17 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.protobuf.Descriptors;
+import erfan.codes.bookshop.enums.Return_Status_Codes;
+import erfan.codes.bookshop.general.common.global.SessionUtil;
+import erfan.codes.bookshop.proto.holder.Global;
+import org.hibernate.Session;
 import org.springframework.http.MediaType;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 public class General {
 
@@ -80,5 +86,28 @@ public class General {
         }
 
         return jobj;
+    }
+
+    public static boolean isEmpty(String s) {
+        return s == null || s.trim().equals("");
+    }
+
+    public static String generateRandomID() {
+        return UUID.randomUUID().toString().replace("-", "");
+    }
+
+    public static void writeErrorOutput(Return_Status_Codes return_status_code) {
+
+        writeErrorOutput(SessionUtil.getRequest(), SessionUtil.getResponse(), return_status_code);
+    }
+
+    public static void writeErrorOutput(HttpServletRequest request, HttpServletResponse response, Return_Status_Codes return_status_code) {
+
+        Global.service_return.Builder ret = Global.service_return.newBuilder();
+        ret.setStatus(return_status_code.getStatus());
+        ret.setCode(0);
+        ret.setMessage(return_status_code.getMessageKey());
+        Output output = new Output(request, response);
+        output.write(ret.build());
     }
 }

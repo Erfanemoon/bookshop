@@ -1,34 +1,27 @@
 package erfan.codes.bookshop.repositories.entities;
 
 import javax.persistence.*;
-import java.util.Objects;
 
+@Table(name = "books")
 @Entity
-@Table(name = "books", schema = "onlinebookstore")
 public class BookEntity {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private String id;
+    @Column(name = "id", nullable = false)
+    private Integer id;
 
-    @Basic
-    @Column(name = "name")
-    private String name;
-
-    @Basic
-    @Column(name = "barcode")
+    @Column(name = "barcode", length = 100)
     private String barcode;
 
-    @Basic
-    @Column(name = "author")
+    @Column(name = "name", length = 100)
+    private String name;
+
+    @Column(name = "author", length = 100)
     private String author;
 
-    @Basic
     @Column(name = "price")
     private Integer price;
 
-    @Basic
     @Column(name = "quantity")
     private Integer quantity;
 
@@ -43,30 +36,12 @@ public class BookEntity {
         this.quantity = quantity;
     }
 
-    public String getBarcode() {
-        return barcode;
+    public Integer getQuantity() {
+        return quantity;
     }
 
-    public void setBarcode(String barcode) {
-        this.barcode = barcode;
-    }
-
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public void setAuthor(String author) {
-        this.author = author;
+    public void setQuantity(Integer quantity) {
+        this.quantity = quantity;
     }
 
     public Integer getPrice() {
@@ -77,43 +52,35 @@ public class BookEntity {
         this.price = price;
     }
 
-    public Integer getQuantity() {
-        return quantity;
+    public String getAuthor() {
+        return author;
     }
 
-    public void setQuantity(Integer quantity) {
-        this.quantity = quantity;
+    public void setAuthor(String author) {
+        this.author = author;
     }
 
-    public String getId() {
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getBarcode() {
+        return barcode;
+    }
+
+    public void setBarcode(String barcode) {
+        this.barcode = barcode;
+    }
+
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        BookEntity that = (BookEntity) o;
-
-        if (!Objects.equals(barcode, that.barcode)) return false;
-        if (!Objects.equals(name, that.name)) return false;
-        if (!Objects.equals(author, that.author)) return false;
-        if (!Objects.equals(price, that.price)) return false;
-        return Objects.equals(quantity, that.quantity);
-    }
-
-    @Override
-    public int hashCode() {
-        int result = barcode != null ? barcode.hashCode() : 0;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (author != null ? author.hashCode() : 0);
-        result = 31 * result + (price != null ? price.hashCode() : 0);
-        result = 31 * result + (quantity != null ? quantity.hashCode() : 0);
-        return result;
     }
 }

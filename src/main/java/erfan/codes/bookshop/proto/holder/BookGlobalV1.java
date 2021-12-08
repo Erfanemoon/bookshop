@@ -39,25 +39,30 @@ public final class BookGlobalV1 {
         getMsgBytes();
 
     /**
-     * <code>repeated .erfan.codes.bookshop.proto.holder.Book data = 4;</code>
+     * <code>int64 userId = 4;</code>
+     */
+    long getUserId();
+
+    /**
+     * <code>repeated .erfan.codes.bookshop.proto.holder.Book data = 5;</code>
      */
     java.util.List<erfan.codes.bookshop.proto.holder.BookGlobalV1.Book> 
         getDataList();
     /**
-     * <code>repeated .erfan.codes.bookshop.proto.holder.Book data = 4;</code>
+     * <code>repeated .erfan.codes.bookshop.proto.holder.Book data = 5;</code>
      */
     erfan.codes.bookshop.proto.holder.BookGlobalV1.Book getData(int index);
     /**
-     * <code>repeated .erfan.codes.bookshop.proto.holder.Book data = 4;</code>
+     * <code>repeated .erfan.codes.bookshop.proto.holder.Book data = 5;</code>
      */
     int getDataCount();
     /**
-     * <code>repeated .erfan.codes.bookshop.proto.holder.Book data = 4;</code>
+     * <code>repeated .erfan.codes.bookshop.proto.holder.Book data = 5;</code>
      */
     java.util.List<? extends erfan.codes.bookshop.proto.holder.BookGlobalV1.BookOrBuilder> 
         getDataOrBuilderList();
     /**
-     * <code>repeated .erfan.codes.bookshop.proto.holder.Book data = 4;</code>
+     * <code>repeated .erfan.codes.bookshop.proto.holder.Book data = 5;</code>
      */
     erfan.codes.bookshop.proto.holder.BookGlobalV1.BookOrBuilder getDataOrBuilder(
         int index);
@@ -78,6 +83,7 @@ public final class BookGlobalV1 {
       status_ = 0;
       code_ = 0;
       msg_ = "";
+      userId_ = 0L;
       data_ = java.util.Collections.emptyList();
     }
 
@@ -121,10 +127,15 @@ public final class BookGlobalV1 {
               msg_ = s;
               break;
             }
-            case 34: {
-              if (!((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+            case 32: {
+
+              userId_ = input.readInt64();
+              break;
+            }
+            case 42: {
+              if (!((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
                 data_ = new java.util.ArrayList<erfan.codes.bookshop.proto.holder.BookGlobalV1.Book>();
-                mutable_bitField0_ |= 0x00000008;
+                mutable_bitField0_ |= 0x00000010;
               }
               data_.add(
                   input.readMessage(erfan.codes.bookshop.proto.holder.BookGlobalV1.Book.parser(), extensionRegistry));
@@ -145,7 +156,7 @@ public final class BookGlobalV1 {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+        if (((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
           data_ = java.util.Collections.unmodifiableList(data_);
         }
         this.unknownFields = unknownFields.build();
@@ -218,35 +229,44 @@ public final class BookGlobalV1 {
       }
     }
 
-    public static final int DATA_FIELD_NUMBER = 4;
+    public static final int USERID_FIELD_NUMBER = 4;
+    private long userId_;
+    /**
+     * <code>int64 userId = 4;</code>
+     */
+    public long getUserId() {
+      return userId_;
+    }
+
+    public static final int DATA_FIELD_NUMBER = 5;
     private java.util.List<erfan.codes.bookshop.proto.holder.BookGlobalV1.Book> data_;
     /**
-     * <code>repeated .erfan.codes.bookshop.proto.holder.Book data = 4;</code>
+     * <code>repeated .erfan.codes.bookshop.proto.holder.Book data = 5;</code>
      */
     public java.util.List<erfan.codes.bookshop.proto.holder.BookGlobalV1.Book> getDataList() {
       return data_;
     }
     /**
-     * <code>repeated .erfan.codes.bookshop.proto.holder.Book data = 4;</code>
+     * <code>repeated .erfan.codes.bookshop.proto.holder.Book data = 5;</code>
      */
     public java.util.List<? extends erfan.codes.bookshop.proto.holder.BookGlobalV1.BookOrBuilder> 
         getDataOrBuilderList() {
       return data_;
     }
     /**
-     * <code>repeated .erfan.codes.bookshop.proto.holder.Book data = 4;</code>
+     * <code>repeated .erfan.codes.bookshop.proto.holder.Book data = 5;</code>
      */
     public int getDataCount() {
       return data_.size();
     }
     /**
-     * <code>repeated .erfan.codes.bookshop.proto.holder.Book data = 4;</code>
+     * <code>repeated .erfan.codes.bookshop.proto.holder.Book data = 5;</code>
      */
     public erfan.codes.bookshop.proto.holder.BookGlobalV1.Book getData(int index) {
       return data_.get(index);
     }
     /**
-     * <code>repeated .erfan.codes.bookshop.proto.holder.Book data = 4;</code>
+     * <code>repeated .erfan.codes.bookshop.proto.holder.Book data = 5;</code>
      */
     public erfan.codes.bookshop.proto.holder.BookGlobalV1.BookOrBuilder getDataOrBuilder(
         int index) {
@@ -276,8 +296,11 @@ public final class BookGlobalV1 {
       if (!getMsgBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 3, msg_);
       }
+      if (userId_ != 0L) {
+        output.writeInt64(4, userId_);
+      }
       for (int i = 0; i < data_.size(); i++) {
-        output.writeMessage(4, data_.get(i));
+        output.writeMessage(5, data_.get(i));
       }
       unknownFields.writeTo(output);
     }
@@ -299,9 +322,13 @@ public final class BookGlobalV1 {
       if (!getMsgBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, msg_);
       }
+      if (userId_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(4, userId_);
+      }
       for (int i = 0; i < data_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(4, data_.get(i));
+          .computeMessageSize(5, data_.get(i));
       }
       size += unknownFields.getSerializedSize();
       memoizedSize = size;
@@ -325,6 +352,8 @@ public final class BookGlobalV1 {
           == other.getCode());
       result = result && getMsg()
           .equals(other.getMsg());
+      result = result && (getUserId()
+          == other.getUserId());
       result = result && getDataList()
           .equals(other.getDataList());
       result = result && unknownFields.equals(other.unknownFields);
@@ -344,6 +373,9 @@ public final class BookGlobalV1 {
       hash = (53 * hash) + getCode();
       hash = (37 * hash) + MSG_FIELD_NUMBER;
       hash = (53 * hash) + getMsg().hashCode();
+      hash = (37 * hash) + USERID_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getUserId());
       if (getDataCount() > 0) {
         hash = (37 * hash) + DATA_FIELD_NUMBER;
         hash = (53 * hash) + getDataList().hashCode();
@@ -488,9 +520,11 @@ public final class BookGlobalV1 {
 
         msg_ = "";
 
+        userId_ = 0L;
+
         if (dataBuilder_ == null) {
           data_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000008);
+          bitField0_ = (bitField0_ & ~0x00000010);
         } else {
           dataBuilder_.clear();
         }
@@ -525,10 +559,11 @@ public final class BookGlobalV1 {
         result.status_ = status_;
         result.code_ = code_;
         result.msg_ = msg_;
+        result.userId_ = userId_;
         if (dataBuilder_ == null) {
-          if (((bitField0_ & 0x00000008) == 0x00000008)) {
+          if (((bitField0_ & 0x00000010) == 0x00000010)) {
             data_ = java.util.Collections.unmodifiableList(data_);
-            bitField0_ = (bitField0_ & ~0x00000008);
+            bitField0_ = (bitField0_ & ~0x00000010);
           }
           result.data_ = data_;
         } else {
@@ -593,11 +628,14 @@ public final class BookGlobalV1 {
           msg_ = other.msg_;
           onChanged();
         }
+        if (other.getUserId() != 0L) {
+          setUserId(other.getUserId());
+        }
         if (dataBuilder_ == null) {
           if (!other.data_.isEmpty()) {
             if (data_.isEmpty()) {
               data_ = other.data_;
-              bitField0_ = (bitField0_ & ~0x00000008);
+              bitField0_ = (bitField0_ & ~0x00000010);
             } else {
               ensureDataIsMutable();
               data_.addAll(other.data_);
@@ -610,7 +648,7 @@ public final class BookGlobalV1 {
               dataBuilder_.dispose();
               dataBuilder_ = null;
               data_ = other.data_;
-              bitField0_ = (bitField0_ & ~0x00000008);
+              bitField0_ = (bitField0_ & ~0x00000010);
               dataBuilder_ = 
                 com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
                    getDataFieldBuilder() : null;
@@ -770,12 +808,38 @@ public final class BookGlobalV1 {
         return this;
       }
 
+      private long userId_ ;
+      /**
+       * <code>int64 userId = 4;</code>
+       */
+      public long getUserId() {
+        return userId_;
+      }
+      /**
+       * <code>int64 userId = 4;</code>
+       */
+      public Builder setUserId(long value) {
+        
+        userId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int64 userId = 4;</code>
+       */
+      public Builder clearUserId() {
+        
+        userId_ = 0L;
+        onChanged();
+        return this;
+      }
+
       private java.util.List<erfan.codes.bookshop.proto.holder.BookGlobalV1.Book> data_ =
         java.util.Collections.emptyList();
       private void ensureDataIsMutable() {
-        if (!((bitField0_ & 0x00000008) == 0x00000008)) {
+        if (!((bitField0_ & 0x00000010) == 0x00000010)) {
           data_ = new java.util.ArrayList<erfan.codes.bookshop.proto.holder.BookGlobalV1.Book>(data_);
-          bitField0_ |= 0x00000008;
+          bitField0_ |= 0x00000010;
          }
       }
 
@@ -783,7 +847,7 @@ public final class BookGlobalV1 {
           erfan.codes.bookshop.proto.holder.BookGlobalV1.Book, erfan.codes.bookshop.proto.holder.BookGlobalV1.Book.Builder, erfan.codes.bookshop.proto.holder.BookGlobalV1.BookOrBuilder> dataBuilder_;
 
       /**
-       * <code>repeated .erfan.codes.bookshop.proto.holder.Book data = 4;</code>
+       * <code>repeated .erfan.codes.bookshop.proto.holder.Book data = 5;</code>
        */
       public java.util.List<erfan.codes.bookshop.proto.holder.BookGlobalV1.Book> getDataList() {
         if (dataBuilder_ == null) {
@@ -793,7 +857,7 @@ public final class BookGlobalV1 {
         }
       }
       /**
-       * <code>repeated .erfan.codes.bookshop.proto.holder.Book data = 4;</code>
+       * <code>repeated .erfan.codes.bookshop.proto.holder.Book data = 5;</code>
        */
       public int getDataCount() {
         if (dataBuilder_ == null) {
@@ -803,7 +867,7 @@ public final class BookGlobalV1 {
         }
       }
       /**
-       * <code>repeated .erfan.codes.bookshop.proto.holder.Book data = 4;</code>
+       * <code>repeated .erfan.codes.bookshop.proto.holder.Book data = 5;</code>
        */
       public erfan.codes.bookshop.proto.holder.BookGlobalV1.Book getData(int index) {
         if (dataBuilder_ == null) {
@@ -813,7 +877,7 @@ public final class BookGlobalV1 {
         }
       }
       /**
-       * <code>repeated .erfan.codes.bookshop.proto.holder.Book data = 4;</code>
+       * <code>repeated .erfan.codes.bookshop.proto.holder.Book data = 5;</code>
        */
       public Builder setData(
           int index, erfan.codes.bookshop.proto.holder.BookGlobalV1.Book value) {
@@ -830,7 +894,7 @@ public final class BookGlobalV1 {
         return this;
       }
       /**
-       * <code>repeated .erfan.codes.bookshop.proto.holder.Book data = 4;</code>
+       * <code>repeated .erfan.codes.bookshop.proto.holder.Book data = 5;</code>
        */
       public Builder setData(
           int index, erfan.codes.bookshop.proto.holder.BookGlobalV1.Book.Builder builderForValue) {
@@ -844,7 +908,7 @@ public final class BookGlobalV1 {
         return this;
       }
       /**
-       * <code>repeated .erfan.codes.bookshop.proto.holder.Book data = 4;</code>
+       * <code>repeated .erfan.codes.bookshop.proto.holder.Book data = 5;</code>
        */
       public Builder addData(erfan.codes.bookshop.proto.holder.BookGlobalV1.Book value) {
         if (dataBuilder_ == null) {
@@ -860,7 +924,7 @@ public final class BookGlobalV1 {
         return this;
       }
       /**
-       * <code>repeated .erfan.codes.bookshop.proto.holder.Book data = 4;</code>
+       * <code>repeated .erfan.codes.bookshop.proto.holder.Book data = 5;</code>
        */
       public Builder addData(
           int index, erfan.codes.bookshop.proto.holder.BookGlobalV1.Book value) {
@@ -877,7 +941,7 @@ public final class BookGlobalV1 {
         return this;
       }
       /**
-       * <code>repeated .erfan.codes.bookshop.proto.holder.Book data = 4;</code>
+       * <code>repeated .erfan.codes.bookshop.proto.holder.Book data = 5;</code>
        */
       public Builder addData(
           erfan.codes.bookshop.proto.holder.BookGlobalV1.Book.Builder builderForValue) {
@@ -891,7 +955,7 @@ public final class BookGlobalV1 {
         return this;
       }
       /**
-       * <code>repeated .erfan.codes.bookshop.proto.holder.Book data = 4;</code>
+       * <code>repeated .erfan.codes.bookshop.proto.holder.Book data = 5;</code>
        */
       public Builder addData(
           int index, erfan.codes.bookshop.proto.holder.BookGlobalV1.Book.Builder builderForValue) {
@@ -905,7 +969,7 @@ public final class BookGlobalV1 {
         return this;
       }
       /**
-       * <code>repeated .erfan.codes.bookshop.proto.holder.Book data = 4;</code>
+       * <code>repeated .erfan.codes.bookshop.proto.holder.Book data = 5;</code>
        */
       public Builder addAllData(
           java.lang.Iterable<? extends erfan.codes.bookshop.proto.holder.BookGlobalV1.Book> values) {
@@ -920,12 +984,12 @@ public final class BookGlobalV1 {
         return this;
       }
       /**
-       * <code>repeated .erfan.codes.bookshop.proto.holder.Book data = 4;</code>
+       * <code>repeated .erfan.codes.bookshop.proto.holder.Book data = 5;</code>
        */
       public Builder clearData() {
         if (dataBuilder_ == null) {
           data_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000008);
+          bitField0_ = (bitField0_ & ~0x00000010);
           onChanged();
         } else {
           dataBuilder_.clear();
@@ -933,7 +997,7 @@ public final class BookGlobalV1 {
         return this;
       }
       /**
-       * <code>repeated .erfan.codes.bookshop.proto.holder.Book data = 4;</code>
+       * <code>repeated .erfan.codes.bookshop.proto.holder.Book data = 5;</code>
        */
       public Builder removeData(int index) {
         if (dataBuilder_ == null) {
@@ -946,14 +1010,14 @@ public final class BookGlobalV1 {
         return this;
       }
       /**
-       * <code>repeated .erfan.codes.bookshop.proto.holder.Book data = 4;</code>
+       * <code>repeated .erfan.codes.bookshop.proto.holder.Book data = 5;</code>
        */
       public erfan.codes.bookshop.proto.holder.BookGlobalV1.Book.Builder getDataBuilder(
           int index) {
         return getDataFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .erfan.codes.bookshop.proto.holder.Book data = 4;</code>
+       * <code>repeated .erfan.codes.bookshop.proto.holder.Book data = 5;</code>
        */
       public erfan.codes.bookshop.proto.holder.BookGlobalV1.BookOrBuilder getDataOrBuilder(
           int index) {
@@ -963,7 +1027,7 @@ public final class BookGlobalV1 {
         }
       }
       /**
-       * <code>repeated .erfan.codes.bookshop.proto.holder.Book data = 4;</code>
+       * <code>repeated .erfan.codes.bookshop.proto.holder.Book data = 5;</code>
        */
       public java.util.List<? extends erfan.codes.bookshop.proto.holder.BookGlobalV1.BookOrBuilder> 
            getDataOrBuilderList() {
@@ -974,14 +1038,14 @@ public final class BookGlobalV1 {
         }
       }
       /**
-       * <code>repeated .erfan.codes.bookshop.proto.holder.Book data = 4;</code>
+       * <code>repeated .erfan.codes.bookshop.proto.holder.Book data = 5;</code>
        */
       public erfan.codes.bookshop.proto.holder.BookGlobalV1.Book.Builder addDataBuilder() {
         return getDataFieldBuilder().addBuilder(
             erfan.codes.bookshop.proto.holder.BookGlobalV1.Book.getDefaultInstance());
       }
       /**
-       * <code>repeated .erfan.codes.bookshop.proto.holder.Book data = 4;</code>
+       * <code>repeated .erfan.codes.bookshop.proto.holder.Book data = 5;</code>
        */
       public erfan.codes.bookshop.proto.holder.BookGlobalV1.Book.Builder addDataBuilder(
           int index) {
@@ -989,7 +1053,7 @@ public final class BookGlobalV1 {
             index, erfan.codes.bookshop.proto.holder.BookGlobalV1.Book.getDefaultInstance());
       }
       /**
-       * <code>repeated .erfan.codes.bookshop.proto.holder.Book data = 4;</code>
+       * <code>repeated .erfan.codes.bookshop.proto.holder.Book data = 5;</code>
        */
       public java.util.List<erfan.codes.bookshop.proto.holder.BookGlobalV1.Book.Builder> 
            getDataBuilderList() {
@@ -1002,7 +1066,7 @@ public final class BookGlobalV1 {
           dataBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
               erfan.codes.bookshop.proto.holder.BookGlobalV1.Book, erfan.codes.bookshop.proto.holder.BookGlobalV1.Book.Builder, erfan.codes.bookshop.proto.holder.BookGlobalV1.BookOrBuilder>(
                   data_,
-                  ((bitField0_ & 0x00000008) == 0x00000008),
+                  ((bitField0_ & 0x00000010) == 0x00000010),
                   getParentForChildren(),
                   isClean());
           data_ = null;
@@ -1067,14 +1131,9 @@ public final class BookGlobalV1 {
       com.google.protobuf.MessageOrBuilder {
 
     /**
-     * <code>string id = 1;</code>
+     * <code>int64 id = 1;</code>
      */
-    java.lang.String getId();
-    /**
-     * <code>string id = 1;</code>
-     */
-    com.google.protobuf.ByteString
-        getIdBytes();
+    long getId();
 
     /**
      * <code>string barcode = 2;</code>
@@ -1129,7 +1188,7 @@ public final class BookGlobalV1 {
       super(builder);
     }
     private Book() {
-      id_ = "";
+      id_ = 0L;
       barcode_ = "";
       author_ = "";
       name_ = "";
@@ -1161,10 +1220,9 @@ public final class BookGlobalV1 {
             case 0:
               done = true;
               break;
-            case 10: {
-              java.lang.String s = input.readStringRequireUtf8();
+            case 8: {
 
-              id_ = s;
+              id_ = input.readInt64();
               break;
             }
             case 18: {
@@ -1228,37 +1286,12 @@ public final class BookGlobalV1 {
     }
 
     public static final int ID_FIELD_NUMBER = 1;
-    private volatile java.lang.Object id_;
+    private long id_;
     /**
-     * <code>string id = 1;</code>
+     * <code>int64 id = 1;</code>
      */
-    public java.lang.String getId() {
-      java.lang.Object ref = id_;
-      if (ref instanceof java.lang.String) {
-        return (java.lang.String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        java.lang.String s = bs.toStringUtf8();
-        id_ = s;
-        return s;
-      }
-    }
-    /**
-     * <code>string id = 1;</code>
-     */
-    public com.google.protobuf.ByteString
-        getIdBytes() {
-      java.lang.Object ref = id_;
-      if (ref instanceof java.lang.String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8(
-                (java.lang.String) ref);
-        id_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+    public long getId() {
+      return id_;
     }
 
     public static final int BARCODE_FIELD_NUMBER = 2;
@@ -1395,8 +1428,8 @@ public final class BookGlobalV1 {
     @java.lang.Override
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
-      if (!getIdBytes().isEmpty()) {
-        com.google.protobuf.GeneratedMessageV3.writeString(output, 1, id_);
+      if (id_ != 0L) {
+        output.writeInt64(1, id_);
       }
       if (!getBarcodeBytes().isEmpty()) {
         com.google.protobuf.GeneratedMessageV3.writeString(output, 2, barcode_);
@@ -1422,8 +1455,9 @@ public final class BookGlobalV1 {
       if (size != -1) return size;
 
       size = 0;
-      if (!getIdBytes().isEmpty()) {
-        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(1, id_);
+      if (id_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(1, id_);
       }
       if (!getBarcodeBytes().isEmpty()) {
         size += com.google.protobuf.GeneratedMessageV3.computeStringSize(2, barcode_);
@@ -1458,8 +1492,8 @@ public final class BookGlobalV1 {
       erfan.codes.bookshop.proto.holder.BookGlobalV1.Book other = (erfan.codes.bookshop.proto.holder.BookGlobalV1.Book) obj;
 
       boolean result = true;
-      result = result && getId()
-          .equals(other.getId());
+      result = result && (getId()
+          == other.getId());
       result = result && getBarcode()
           .equals(other.getBarcode());
       result = result && getAuthor()
@@ -1482,7 +1516,8 @@ public final class BookGlobalV1 {
       int hash = 41;
       hash = (19 * hash) + getDescriptor().hashCode();
       hash = (37 * hash) + ID_FIELD_NUMBER;
-      hash = (53 * hash) + getId().hashCode();
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getId());
       hash = (37 * hash) + BARCODE_FIELD_NUMBER;
       hash = (53 * hash) + getBarcode().hashCode();
       hash = (37 * hash) + AUTHOR_FIELD_NUMBER;
@@ -1628,7 +1663,7 @@ public final class BookGlobalV1 {
       @java.lang.Override
       public Builder clear() {
         super.clear();
-        id_ = "";
+        id_ = 0L;
 
         barcode_ = "";
 
@@ -1720,9 +1755,8 @@ public final class BookGlobalV1 {
 
       public Builder mergeFrom(erfan.codes.bookshop.proto.holder.BookGlobalV1.Book other) {
         if (other == erfan.codes.bookshop.proto.holder.BookGlobalV1.Book.getDefaultInstance()) return this;
-        if (!other.getId().isEmpty()) {
-          id_ = other.id_;
-          onChanged();
+        if (other.getId() != 0L) {
+          setId(other.getId());
         }
         if (!other.getBarcode().isEmpty()) {
           barcode_ = other.barcode_;
@@ -1771,71 +1805,28 @@ public final class BookGlobalV1 {
         return this;
       }
 
-      private java.lang.Object id_ = "";
+      private long id_ ;
       /**
-       * <code>string id = 1;</code>
+       * <code>int64 id = 1;</code>
        */
-      public java.lang.String getId() {
-        java.lang.Object ref = id_;
-        if (!(ref instanceof java.lang.String)) {
-          com.google.protobuf.ByteString bs =
-              (com.google.protobuf.ByteString) ref;
-          java.lang.String s = bs.toStringUtf8();
-          id_ = s;
-          return s;
-        } else {
-          return (java.lang.String) ref;
-        }
+      public long getId() {
+        return id_;
       }
       /**
-       * <code>string id = 1;</code>
+       * <code>int64 id = 1;</code>
        */
-      public com.google.protobuf.ByteString
-          getIdBytes() {
-        java.lang.Object ref = id_;
-        if (ref instanceof String) {
-          com.google.protobuf.ByteString b = 
-              com.google.protobuf.ByteString.copyFromUtf8(
-                  (java.lang.String) ref);
-          id_ = b;
-          return b;
-        } else {
-          return (com.google.protobuf.ByteString) ref;
-        }
-      }
-      /**
-       * <code>string id = 1;</code>
-       */
-      public Builder setId(
-          java.lang.String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  
+      public Builder setId(long value) {
+        
         id_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>string id = 1;</code>
+       * <code>int64 id = 1;</code>
        */
       public Builder clearId() {
         
-        id_ = getDefaultInstance().getId();
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>string id = 1;</code>
-       */
-      public Builder setIdBytes(
-          com.google.protobuf.ByteString value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  checkByteStringIsUtf8(value);
-        
-        id_ = value;
+        id_ = 0L;
         onChanged();
         return this;
       }
@@ -2146,6 +2137,1118 @@ public final class BookGlobalV1 {
 
     @java.lang.Override
     public erfan.codes.bookshop.proto.holder.BookGlobalV1.Book getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
+  public interface userBooksOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:erfan.codes.bookshop.proto.holder.userBooks)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>int32 status = 1;</code>
+     */
+    int getStatus();
+
+    /**
+     * <code>int32 code = 2;</code>
+     */
+    int getCode();
+
+    /**
+     * <code>string msg = 3;</code>
+     */
+    java.lang.String getMsg();
+    /**
+     * <code>string msg = 3;</code>
+     */
+    com.google.protobuf.ByteString
+        getMsgBytes();
+
+    /**
+     * <code>int64 userId = 4;</code>
+     */
+    long getUserId();
+
+    /**
+     * <code>repeated .erfan.codes.bookshop.proto.holder.Book userBooks = 5;</code>
+     */
+    java.util.List<erfan.codes.bookshop.proto.holder.BookGlobalV1.Book> 
+        getUserBooksList();
+    /**
+     * <code>repeated .erfan.codes.bookshop.proto.holder.Book userBooks = 5;</code>
+     */
+    erfan.codes.bookshop.proto.holder.BookGlobalV1.Book getUserBooks(int index);
+    /**
+     * <code>repeated .erfan.codes.bookshop.proto.holder.Book userBooks = 5;</code>
+     */
+    int getUserBooksCount();
+    /**
+     * <code>repeated .erfan.codes.bookshop.proto.holder.Book userBooks = 5;</code>
+     */
+    java.util.List<? extends erfan.codes.bookshop.proto.holder.BookGlobalV1.BookOrBuilder> 
+        getUserBooksOrBuilderList();
+    /**
+     * <code>repeated .erfan.codes.bookshop.proto.holder.Book userBooks = 5;</code>
+     */
+    erfan.codes.bookshop.proto.holder.BookGlobalV1.BookOrBuilder getUserBooksOrBuilder(
+        int index);
+  }
+  /**
+   * Protobuf type {@code erfan.codes.bookshop.proto.holder.userBooks}
+   */
+  public  static final class userBooks extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:erfan.codes.bookshop.proto.holder.userBooks)
+      userBooksOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use userBooks.newBuilder() to construct.
+    private userBooks(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private userBooks() {
+      status_ = 0;
+      code_ = 0;
+      msg_ = "";
+      userId_ = 0L;
+      userBooks_ = java.util.Collections.emptyList();
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private userBooks(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              status_ = input.readInt32();
+              break;
+            }
+            case 16: {
+
+              code_ = input.readInt32();
+              break;
+            }
+            case 26: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              msg_ = s;
+              break;
+            }
+            case 32: {
+
+              userId_ = input.readInt64();
+              break;
+            }
+            case 42: {
+              if (!((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+                userBooks_ = new java.util.ArrayList<erfan.codes.bookshop.proto.holder.BookGlobalV1.Book>();
+                mutable_bitField0_ |= 0x00000010;
+              }
+              userBooks_.add(
+                  input.readMessage(erfan.codes.bookshop.proto.holder.BookGlobalV1.Book.parser(), extensionRegistry));
+              break;
+            }
+            default: {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+          userBooks_ = java.util.Collections.unmodifiableList(userBooks_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return erfan.codes.bookshop.proto.holder.BookGlobalV1.internal_static_erfan_codes_bookshop_proto_holder_userBooks_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return erfan.codes.bookshop.proto.holder.BookGlobalV1.internal_static_erfan_codes_bookshop_proto_holder_userBooks_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              erfan.codes.bookshop.proto.holder.BookGlobalV1.userBooks.class, erfan.codes.bookshop.proto.holder.BookGlobalV1.userBooks.Builder.class);
+    }
+
+    private int bitField0_;
+    public static final int STATUS_FIELD_NUMBER = 1;
+    private int status_;
+    /**
+     * <code>int32 status = 1;</code>
+     */
+    public int getStatus() {
+      return status_;
+    }
+
+    public static final int CODE_FIELD_NUMBER = 2;
+    private int code_;
+    /**
+     * <code>int32 code = 2;</code>
+     */
+    public int getCode() {
+      return code_;
+    }
+
+    public static final int MSG_FIELD_NUMBER = 3;
+    private volatile java.lang.Object msg_;
+    /**
+     * <code>string msg = 3;</code>
+     */
+    public java.lang.String getMsg() {
+      java.lang.Object ref = msg_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        msg_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string msg = 3;</code>
+     */
+    public com.google.protobuf.ByteString
+        getMsgBytes() {
+      java.lang.Object ref = msg_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        msg_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int USERID_FIELD_NUMBER = 4;
+    private long userId_;
+    /**
+     * <code>int64 userId = 4;</code>
+     */
+    public long getUserId() {
+      return userId_;
+    }
+
+    public static final int USERBOOKS_FIELD_NUMBER = 5;
+    private java.util.List<erfan.codes.bookshop.proto.holder.BookGlobalV1.Book> userBooks_;
+    /**
+     * <code>repeated .erfan.codes.bookshop.proto.holder.Book userBooks = 5;</code>
+     */
+    public java.util.List<erfan.codes.bookshop.proto.holder.BookGlobalV1.Book> getUserBooksList() {
+      return userBooks_;
+    }
+    /**
+     * <code>repeated .erfan.codes.bookshop.proto.holder.Book userBooks = 5;</code>
+     */
+    public java.util.List<? extends erfan.codes.bookshop.proto.holder.BookGlobalV1.BookOrBuilder> 
+        getUserBooksOrBuilderList() {
+      return userBooks_;
+    }
+    /**
+     * <code>repeated .erfan.codes.bookshop.proto.holder.Book userBooks = 5;</code>
+     */
+    public int getUserBooksCount() {
+      return userBooks_.size();
+    }
+    /**
+     * <code>repeated .erfan.codes.bookshop.proto.holder.Book userBooks = 5;</code>
+     */
+    public erfan.codes.bookshop.proto.holder.BookGlobalV1.Book getUserBooks(int index) {
+      return userBooks_.get(index);
+    }
+    /**
+     * <code>repeated .erfan.codes.bookshop.proto.holder.Book userBooks = 5;</code>
+     */
+    public erfan.codes.bookshop.proto.holder.BookGlobalV1.BookOrBuilder getUserBooksOrBuilder(
+        int index) {
+      return userBooks_.get(index);
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (status_ != 0) {
+        output.writeInt32(1, status_);
+      }
+      if (code_ != 0) {
+        output.writeInt32(2, code_);
+      }
+      if (!getMsgBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, msg_);
+      }
+      if (userId_ != 0L) {
+        output.writeInt64(4, userId_);
+      }
+      for (int i = 0; i < userBooks_.size(); i++) {
+        output.writeMessage(5, userBooks_.get(i));
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (status_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, status_);
+      }
+      if (code_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, code_);
+      }
+      if (!getMsgBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, msg_);
+      }
+      if (userId_ != 0L) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt64Size(4, userId_);
+      }
+      for (int i = 0; i < userBooks_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(5, userBooks_.get(i));
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof erfan.codes.bookshop.proto.holder.BookGlobalV1.userBooks)) {
+        return super.equals(obj);
+      }
+      erfan.codes.bookshop.proto.holder.BookGlobalV1.userBooks other = (erfan.codes.bookshop.proto.holder.BookGlobalV1.userBooks) obj;
+
+      boolean result = true;
+      result = result && (getStatus()
+          == other.getStatus());
+      result = result && (getCode()
+          == other.getCode());
+      result = result && getMsg()
+          .equals(other.getMsg());
+      result = result && (getUserId()
+          == other.getUserId());
+      result = result && getUserBooksList()
+          .equals(other.getUserBooksList());
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + STATUS_FIELD_NUMBER;
+      hash = (53 * hash) + getStatus();
+      hash = (37 * hash) + CODE_FIELD_NUMBER;
+      hash = (53 * hash) + getCode();
+      hash = (37 * hash) + MSG_FIELD_NUMBER;
+      hash = (53 * hash) + getMsg().hashCode();
+      hash = (37 * hash) + USERID_FIELD_NUMBER;
+      hash = (53 * hash) + com.google.protobuf.Internal.hashLong(
+          getUserId());
+      if (getUserBooksCount() > 0) {
+        hash = (37 * hash) + USERBOOKS_FIELD_NUMBER;
+        hash = (53 * hash) + getUserBooksList().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static erfan.codes.bookshop.proto.holder.BookGlobalV1.userBooks parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static erfan.codes.bookshop.proto.holder.BookGlobalV1.userBooks parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static erfan.codes.bookshop.proto.holder.BookGlobalV1.userBooks parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static erfan.codes.bookshop.proto.holder.BookGlobalV1.userBooks parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static erfan.codes.bookshop.proto.holder.BookGlobalV1.userBooks parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static erfan.codes.bookshop.proto.holder.BookGlobalV1.userBooks parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static erfan.codes.bookshop.proto.holder.BookGlobalV1.userBooks parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static erfan.codes.bookshop.proto.holder.BookGlobalV1.userBooks parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static erfan.codes.bookshop.proto.holder.BookGlobalV1.userBooks parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static erfan.codes.bookshop.proto.holder.BookGlobalV1.userBooks parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static erfan.codes.bookshop.proto.holder.BookGlobalV1.userBooks parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static erfan.codes.bookshop.proto.holder.BookGlobalV1.userBooks parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(erfan.codes.bookshop.proto.holder.BookGlobalV1.userBooks prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code erfan.codes.bookshop.proto.holder.userBooks}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:erfan.codes.bookshop.proto.holder.userBooks)
+        erfan.codes.bookshop.proto.holder.BookGlobalV1.userBooksOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return erfan.codes.bookshop.proto.holder.BookGlobalV1.internal_static_erfan_codes_bookshop_proto_holder_userBooks_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return erfan.codes.bookshop.proto.holder.BookGlobalV1.internal_static_erfan_codes_bookshop_proto_holder_userBooks_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                erfan.codes.bookshop.proto.holder.BookGlobalV1.userBooks.class, erfan.codes.bookshop.proto.holder.BookGlobalV1.userBooks.Builder.class);
+      }
+
+      // Construct using erfan.codes.bookshop.proto.holder.BookGlobalV1.userBooks.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+          getUserBooksFieldBuilder();
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        status_ = 0;
+
+        code_ = 0;
+
+        msg_ = "";
+
+        userId_ = 0L;
+
+        if (userBooksBuilder_ == null) {
+          userBooks_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000010);
+        } else {
+          userBooksBuilder_.clear();
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return erfan.codes.bookshop.proto.holder.BookGlobalV1.internal_static_erfan_codes_bookshop_proto_holder_userBooks_descriptor;
+      }
+
+      @java.lang.Override
+      public erfan.codes.bookshop.proto.holder.BookGlobalV1.userBooks getDefaultInstanceForType() {
+        return erfan.codes.bookshop.proto.holder.BookGlobalV1.userBooks.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public erfan.codes.bookshop.proto.holder.BookGlobalV1.userBooks build() {
+        erfan.codes.bookshop.proto.holder.BookGlobalV1.userBooks result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public erfan.codes.bookshop.proto.holder.BookGlobalV1.userBooks buildPartial() {
+        erfan.codes.bookshop.proto.holder.BookGlobalV1.userBooks result = new erfan.codes.bookshop.proto.holder.BookGlobalV1.userBooks(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        result.status_ = status_;
+        result.code_ = code_;
+        result.msg_ = msg_;
+        result.userId_ = userId_;
+        if (userBooksBuilder_ == null) {
+          if (((bitField0_ & 0x00000010) == 0x00000010)) {
+            userBooks_ = java.util.Collections.unmodifiableList(userBooks_);
+            bitField0_ = (bitField0_ & ~0x00000010);
+          }
+          result.userBooks_ = userBooks_;
+        } else {
+          result.userBooks_ = userBooksBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof erfan.codes.bookshop.proto.holder.BookGlobalV1.userBooks) {
+          return mergeFrom((erfan.codes.bookshop.proto.holder.BookGlobalV1.userBooks)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(erfan.codes.bookshop.proto.holder.BookGlobalV1.userBooks other) {
+        if (other == erfan.codes.bookshop.proto.holder.BookGlobalV1.userBooks.getDefaultInstance()) return this;
+        if (other.getStatus() != 0) {
+          setStatus(other.getStatus());
+        }
+        if (other.getCode() != 0) {
+          setCode(other.getCode());
+        }
+        if (!other.getMsg().isEmpty()) {
+          msg_ = other.msg_;
+          onChanged();
+        }
+        if (other.getUserId() != 0L) {
+          setUserId(other.getUserId());
+        }
+        if (userBooksBuilder_ == null) {
+          if (!other.userBooks_.isEmpty()) {
+            if (userBooks_.isEmpty()) {
+              userBooks_ = other.userBooks_;
+              bitField0_ = (bitField0_ & ~0x00000010);
+            } else {
+              ensureUserBooksIsMutable();
+              userBooks_.addAll(other.userBooks_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.userBooks_.isEmpty()) {
+            if (userBooksBuilder_.isEmpty()) {
+              userBooksBuilder_.dispose();
+              userBooksBuilder_ = null;
+              userBooks_ = other.userBooks_;
+              bitField0_ = (bitField0_ & ~0x00000010);
+              userBooksBuilder_ = 
+                com.google.protobuf.GeneratedMessageV3.alwaysUseFieldBuilders ?
+                   getUserBooksFieldBuilder() : null;
+            } else {
+              userBooksBuilder_.addAllMessages(other.userBooks_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        erfan.codes.bookshop.proto.holder.BookGlobalV1.userBooks parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (erfan.codes.bookshop.proto.holder.BookGlobalV1.userBooks) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      private int status_ ;
+      /**
+       * <code>int32 status = 1;</code>
+       */
+      public int getStatus() {
+        return status_;
+      }
+      /**
+       * <code>int32 status = 1;</code>
+       */
+      public Builder setStatus(int value) {
+        
+        status_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 status = 1;</code>
+       */
+      public Builder clearStatus() {
+        
+        status_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int code_ ;
+      /**
+       * <code>int32 code = 2;</code>
+       */
+      public int getCode() {
+        return code_;
+      }
+      /**
+       * <code>int32 code = 2;</code>
+       */
+      public Builder setCode(int value) {
+        
+        code_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 code = 2;</code>
+       */
+      public Builder clearCode() {
+        
+        code_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object msg_ = "";
+      /**
+       * <code>string msg = 3;</code>
+       */
+      public java.lang.String getMsg() {
+        java.lang.Object ref = msg_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          msg_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string msg = 3;</code>
+       */
+      public com.google.protobuf.ByteString
+          getMsgBytes() {
+        java.lang.Object ref = msg_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          msg_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string msg = 3;</code>
+       */
+      public Builder setMsg(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        msg_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string msg = 3;</code>
+       */
+      public Builder clearMsg() {
+        
+        msg_ = getDefaultInstance().getMsg();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string msg = 3;</code>
+       */
+      public Builder setMsgBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        msg_ = value;
+        onChanged();
+        return this;
+      }
+
+      private long userId_ ;
+      /**
+       * <code>int64 userId = 4;</code>
+       */
+      public long getUserId() {
+        return userId_;
+      }
+      /**
+       * <code>int64 userId = 4;</code>
+       */
+      public Builder setUserId(long value) {
+        
+        userId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int64 userId = 4;</code>
+       */
+      public Builder clearUserId() {
+        
+        userId_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      private java.util.List<erfan.codes.bookshop.proto.holder.BookGlobalV1.Book> userBooks_ =
+        java.util.Collections.emptyList();
+      private void ensureUserBooksIsMutable() {
+        if (!((bitField0_ & 0x00000010) == 0x00000010)) {
+          userBooks_ = new java.util.ArrayList<erfan.codes.bookshop.proto.holder.BookGlobalV1.Book>(userBooks_);
+          bitField0_ |= 0x00000010;
+         }
+      }
+
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          erfan.codes.bookshop.proto.holder.BookGlobalV1.Book, erfan.codes.bookshop.proto.holder.BookGlobalV1.Book.Builder, erfan.codes.bookshop.proto.holder.BookGlobalV1.BookOrBuilder> userBooksBuilder_;
+
+      /**
+       * <code>repeated .erfan.codes.bookshop.proto.holder.Book userBooks = 5;</code>
+       */
+      public java.util.List<erfan.codes.bookshop.proto.holder.BookGlobalV1.Book> getUserBooksList() {
+        if (userBooksBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(userBooks_);
+        } else {
+          return userBooksBuilder_.getMessageList();
+        }
+      }
+      /**
+       * <code>repeated .erfan.codes.bookshop.proto.holder.Book userBooks = 5;</code>
+       */
+      public int getUserBooksCount() {
+        if (userBooksBuilder_ == null) {
+          return userBooks_.size();
+        } else {
+          return userBooksBuilder_.getCount();
+        }
+      }
+      /**
+       * <code>repeated .erfan.codes.bookshop.proto.holder.Book userBooks = 5;</code>
+       */
+      public erfan.codes.bookshop.proto.holder.BookGlobalV1.Book getUserBooks(int index) {
+        if (userBooksBuilder_ == null) {
+          return userBooks_.get(index);
+        } else {
+          return userBooksBuilder_.getMessage(index);
+        }
+      }
+      /**
+       * <code>repeated .erfan.codes.bookshop.proto.holder.Book userBooks = 5;</code>
+       */
+      public Builder setUserBooks(
+          int index, erfan.codes.bookshop.proto.holder.BookGlobalV1.Book value) {
+        if (userBooksBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureUserBooksIsMutable();
+          userBooks_.set(index, value);
+          onChanged();
+        } else {
+          userBooksBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .erfan.codes.bookshop.proto.holder.Book userBooks = 5;</code>
+       */
+      public Builder setUserBooks(
+          int index, erfan.codes.bookshop.proto.holder.BookGlobalV1.Book.Builder builderForValue) {
+        if (userBooksBuilder_ == null) {
+          ensureUserBooksIsMutable();
+          userBooks_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          userBooksBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .erfan.codes.bookshop.proto.holder.Book userBooks = 5;</code>
+       */
+      public Builder addUserBooks(erfan.codes.bookshop.proto.holder.BookGlobalV1.Book value) {
+        if (userBooksBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureUserBooksIsMutable();
+          userBooks_.add(value);
+          onChanged();
+        } else {
+          userBooksBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .erfan.codes.bookshop.proto.holder.Book userBooks = 5;</code>
+       */
+      public Builder addUserBooks(
+          int index, erfan.codes.bookshop.proto.holder.BookGlobalV1.Book value) {
+        if (userBooksBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureUserBooksIsMutable();
+          userBooks_.add(index, value);
+          onChanged();
+        } else {
+          userBooksBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .erfan.codes.bookshop.proto.holder.Book userBooks = 5;</code>
+       */
+      public Builder addUserBooks(
+          erfan.codes.bookshop.proto.holder.BookGlobalV1.Book.Builder builderForValue) {
+        if (userBooksBuilder_ == null) {
+          ensureUserBooksIsMutable();
+          userBooks_.add(builderForValue.build());
+          onChanged();
+        } else {
+          userBooksBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .erfan.codes.bookshop.proto.holder.Book userBooks = 5;</code>
+       */
+      public Builder addUserBooks(
+          int index, erfan.codes.bookshop.proto.holder.BookGlobalV1.Book.Builder builderForValue) {
+        if (userBooksBuilder_ == null) {
+          ensureUserBooksIsMutable();
+          userBooks_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          userBooksBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .erfan.codes.bookshop.proto.holder.Book userBooks = 5;</code>
+       */
+      public Builder addAllUserBooks(
+          java.lang.Iterable<? extends erfan.codes.bookshop.proto.holder.BookGlobalV1.Book> values) {
+        if (userBooksBuilder_ == null) {
+          ensureUserBooksIsMutable();
+          com.google.protobuf.AbstractMessageLite.Builder.addAll(
+              values, userBooks_);
+          onChanged();
+        } else {
+          userBooksBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .erfan.codes.bookshop.proto.holder.Book userBooks = 5;</code>
+       */
+      public Builder clearUserBooks() {
+        if (userBooksBuilder_ == null) {
+          userBooks_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000010);
+          onChanged();
+        } else {
+          userBooksBuilder_.clear();
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .erfan.codes.bookshop.proto.holder.Book userBooks = 5;</code>
+       */
+      public Builder removeUserBooks(int index) {
+        if (userBooksBuilder_ == null) {
+          ensureUserBooksIsMutable();
+          userBooks_.remove(index);
+          onChanged();
+        } else {
+          userBooksBuilder_.remove(index);
+        }
+        return this;
+      }
+      /**
+       * <code>repeated .erfan.codes.bookshop.proto.holder.Book userBooks = 5;</code>
+       */
+      public erfan.codes.bookshop.proto.holder.BookGlobalV1.Book.Builder getUserBooksBuilder(
+          int index) {
+        return getUserBooksFieldBuilder().getBuilder(index);
+      }
+      /**
+       * <code>repeated .erfan.codes.bookshop.proto.holder.Book userBooks = 5;</code>
+       */
+      public erfan.codes.bookshop.proto.holder.BookGlobalV1.BookOrBuilder getUserBooksOrBuilder(
+          int index) {
+        if (userBooksBuilder_ == null) {
+          return userBooks_.get(index);  } else {
+          return userBooksBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      /**
+       * <code>repeated .erfan.codes.bookshop.proto.holder.Book userBooks = 5;</code>
+       */
+      public java.util.List<? extends erfan.codes.bookshop.proto.holder.BookGlobalV1.BookOrBuilder> 
+           getUserBooksOrBuilderList() {
+        if (userBooksBuilder_ != null) {
+          return userBooksBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(userBooks_);
+        }
+      }
+      /**
+       * <code>repeated .erfan.codes.bookshop.proto.holder.Book userBooks = 5;</code>
+       */
+      public erfan.codes.bookshop.proto.holder.BookGlobalV1.Book.Builder addUserBooksBuilder() {
+        return getUserBooksFieldBuilder().addBuilder(
+            erfan.codes.bookshop.proto.holder.BookGlobalV1.Book.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .erfan.codes.bookshop.proto.holder.Book userBooks = 5;</code>
+       */
+      public erfan.codes.bookshop.proto.holder.BookGlobalV1.Book.Builder addUserBooksBuilder(
+          int index) {
+        return getUserBooksFieldBuilder().addBuilder(
+            index, erfan.codes.bookshop.proto.holder.BookGlobalV1.Book.getDefaultInstance());
+      }
+      /**
+       * <code>repeated .erfan.codes.bookshop.proto.holder.Book userBooks = 5;</code>
+       */
+      public java.util.List<erfan.codes.bookshop.proto.holder.BookGlobalV1.Book.Builder> 
+           getUserBooksBuilderList() {
+        return getUserBooksFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilderV3<
+          erfan.codes.bookshop.proto.holder.BookGlobalV1.Book, erfan.codes.bookshop.proto.holder.BookGlobalV1.Book.Builder, erfan.codes.bookshop.proto.holder.BookGlobalV1.BookOrBuilder> 
+          getUserBooksFieldBuilder() {
+        if (userBooksBuilder_ == null) {
+          userBooksBuilder_ = new com.google.protobuf.RepeatedFieldBuilderV3<
+              erfan.codes.bookshop.proto.holder.BookGlobalV1.Book, erfan.codes.bookshop.proto.holder.BookGlobalV1.Book.Builder, erfan.codes.bookshop.proto.holder.BookGlobalV1.BookOrBuilder>(
+                  userBooks_,
+                  ((bitField0_ & 0x00000010) == 0x00000010),
+                  getParentForChildren(),
+                  isClean());
+          userBooks_ = null;
+        }
+        return userBooksBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFieldsProto3(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:erfan.codes.bookshop.proto.holder.userBooks)
+    }
+
+    // @@protoc_insertion_point(class_scope:erfan.codes.bookshop.proto.holder.userBooks)
+    private static final erfan.codes.bookshop.proto.holder.BookGlobalV1.userBooks DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new erfan.codes.bookshop.proto.holder.BookGlobalV1.userBooks();
+    }
+
+    public static erfan.codes.bookshop.proto.holder.BookGlobalV1.userBooks getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<userBooks>
+        PARSER = new com.google.protobuf.AbstractParser<userBooks>() {
+      @java.lang.Override
+      public userBooks parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new userBooks(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<userBooks> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<userBooks> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public erfan.codes.bookshop.proto.holder.BookGlobalV1.userBooks getDefaultInstanceForType() {
       return DEFAULT_INSTANCE;
     }
 
@@ -3032,6 +4135,11 @@ public final class BookGlobalV1 {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_erfan_codes_bookshop_proto_holder_Book_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_erfan_codes_bookshop_proto_holder_userBooks_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_erfan_codes_bookshop_proto_holder_userBooks_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_erfan_codes_bookshop_proto_holder_addBook_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -3046,15 +4154,19 @@ public final class BookGlobalV1 {
   static {
     java.lang.String[] descriptorData = {
       "\n\022BookGlobalV1.proto\022!erfan.codes.booksh" +
-      "op.proto.holder\"l\n\010BookList\022\016\n\006status\030\001 " +
-      "\001(\005\022\014\n\004code\030\002 \001(\005\022\013\n\003msg\030\003 \001(\t\0225\n\004data\030\004" +
-      " \003(\0132\'.erfan.codes.bookshop.proto.holder" +
-      ".Book\"b\n\004Book\022\n\n\002id\030\001 \001(\t\022\017\n\007barcode\030\002 \001" +
-      "(\t\022\016\n\006author\030\003 \001(\t\022\014\n\004name\030\004 \001(\t\022\r\n\005pric" +
-      "e\030\005 \001(\003\022\020\n\010quantity\030\006 \001(\003\"k\n\007addBook\022\016\n\006" +
-      "status\030\001 \001(\005\022\014\n\004code\030\002 \001(\005\022\013\n\003msg\030\003 \001(\t\022" +
-      "5\n\004book\030\004 \001(\0132\'.erfan.codes.bookshop.pro" +
-      "to.holder.Bookb\006proto3"
+      "op.proto.holder\"|\n\010BookList\022\016\n\006status\030\001 " +
+      "\001(\005\022\014\n\004code\030\002 \001(\005\022\013\n\003msg\030\003 \001(\t\022\016\n\006userId" +
+      "\030\004 \001(\003\0225\n\004data\030\005 \003(\0132\'.erfan.codes.books" +
+      "hop.proto.holder.Book\"b\n\004Book\022\n\n\002id\030\001 \001(" +
+      "\003\022\017\n\007barcode\030\002 \001(\t\022\016\n\006author\030\003 \001(\t\022\014\n\004na" +
+      "me\030\004 \001(\t\022\r\n\005price\030\005 \001(\003\022\020\n\010quantity\030\006 \001(" +
+      "\003\"\202\001\n\tuserBooks\022\016\n\006status\030\001 \001(\005\022\014\n\004code\030" +
+      "\002 \001(\005\022\013\n\003msg\030\003 \001(\t\022\016\n\006userId\030\004 \001(\003\022:\n\tus" +
+      "erBooks\030\005 \003(\0132\'.erfan.codes.bookshop.pro" +
+      "to.holder.Book\"k\n\007addBook\022\016\n\006status\030\001 \001(" +
+      "\005\022\014\n\004code\030\002 \001(\005\022\013\n\003msg\030\003 \001(\t\0225\n\004book\030\004 \001" +
+      "(\0132\'.erfan.codes.bookshop.proto.holder.B" +
+      "ookb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -3073,15 +4185,21 @@ public final class BookGlobalV1 {
     internal_static_erfan_codes_bookshop_proto_holder_BookList_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_erfan_codes_bookshop_proto_holder_BookList_descriptor,
-        new java.lang.String[] { "Status", "Code", "Msg", "Data", });
+        new java.lang.String[] { "Status", "Code", "Msg", "UserId", "Data", });
     internal_static_erfan_codes_bookshop_proto_holder_Book_descriptor =
       getDescriptor().getMessageTypes().get(1);
     internal_static_erfan_codes_bookshop_proto_holder_Book_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_erfan_codes_bookshop_proto_holder_Book_descriptor,
         new java.lang.String[] { "Id", "Barcode", "Author", "Name", "Price", "Quantity", });
-    internal_static_erfan_codes_bookshop_proto_holder_addBook_descriptor =
+    internal_static_erfan_codes_bookshop_proto_holder_userBooks_descriptor =
       getDescriptor().getMessageTypes().get(2);
+    internal_static_erfan_codes_bookshop_proto_holder_userBooks_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_erfan_codes_bookshop_proto_holder_userBooks_descriptor,
+        new java.lang.String[] { "Status", "Code", "Msg", "UserId", "UserBooks", });
+    internal_static_erfan_codes_bookshop_proto_holder_addBook_descriptor =
+      getDescriptor().getMessageTypes().get(3);
     internal_static_erfan_codes_bookshop_proto_holder_addBook_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_erfan_codes_bookshop_proto_holder_addBook_descriptor,

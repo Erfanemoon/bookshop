@@ -4,7 +4,11 @@ public enum Return_Status_Codes implements IReturn_Status_Codes {
     UNDEFINED(0, "undefined"),
     OK_VALID_FORM(100, "ok_validForm"),
     BARCODE_CHECK_ERROR(500, "barcode should be checked , sorry"),
-    CHECK_BARCODE(400, "no data found with provided barcode");
+    CHECK_BARCODE(400, "no data found with provided barcode"),
+    INVALID_SUBSCRIBER_INFORMATION(400, "the inserted data is not complete or valid , please check"),
+    LOGIN_CREDENTIAL_NOT_VALID(400, "the credentials provided for login are wrong"),
+    SC_FORBIDDEN(403, "the user did not provide the sessionId to login into the system"),
+    SESSION_NO_LONGER_VALID(403, "sessionId is no longer valid");
 
     private String messageKey;
     private int statusCode;

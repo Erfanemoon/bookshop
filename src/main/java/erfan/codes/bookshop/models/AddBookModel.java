@@ -4,10 +4,17 @@ import erfan.codes.bookshop.enums.Return_Status_Codes;
 import erfan.codes.bookshop.general.common.global.SpringContext;
 import erfan.codes.bookshop.repositories.BookRepo;
 import erfan.codes.bookshop.repositories.entities.BookEntity;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceUnit;
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
 
 public class AddBookModel extends BaseInputModel {
@@ -21,7 +28,7 @@ public class AddBookModel extends BaseInputModel {
     @Override
     public void validate(Errors errors) {
 
-        BookRepo repo = SpringContext.getBean(BookRepo.class);
+        BookRepo repo = SpringContext.getApplicationContext().getBean(BookRepo.class);
         List<BookEntity> books = repo.findByBarcode(this.barcode);
 
         if (books.size() > 1) {
@@ -35,6 +42,7 @@ public class AddBookModel extends BaseInputModel {
         } else {
             this.return_status_code = Return_Status_Codes.CHECK_BARCODE;
         }
+
     }
 
     public String getBarcode() {

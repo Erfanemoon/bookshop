@@ -1,6 +1,7 @@
-package erfan.codes.bookshop.general.common.global;
+package erfan.codes.bookshop.general.common.global.config;
 
 import erfan.codes.bookshop.aspect.SpringValidatorRegistry;
+import erfan.codes.bookshop.general.common.global.MyValidator;
 import org.springframework.beans.factory.config.MethodInvokingFactoryBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -26,5 +27,11 @@ public class WebConfig {
         methodInvokingFactoryBean.setArguments(myValidator());
         return methodInvokingFactoryBean;
     }
+
+//    @Bean
+//    public JedisConnectionFactory jedisConnectionFactory() {
+//        JedisConnectionFactory factory = new JedisConnectionFactory();
+//        return factory;
+//    }
 
 }

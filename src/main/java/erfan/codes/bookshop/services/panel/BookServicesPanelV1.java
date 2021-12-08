@@ -1,6 +1,7 @@
 package erfan.codes.bookshop.services.panel;
 
-import erfan.codes.bookshop.controller.BooksPanelServiceImpl;
+import erfan.codes.bookshop.controller.books.BooksPanelServiceImpl;
+import erfan.codes.bookshop.controller.books.IBooksPanelService;
 import erfan.codes.bookshop.general.common.global.RM;
 import erfan.codes.bookshop.models.AddBookModel;
 import erfan.codes.bookshop.proto.holder.BookGlobalV1;
@@ -15,7 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @RequestMapping(value = "/apipanel/v1/books")
 public class BookServicesPanelV1 {
 
-    private BooksPanelServiceImpl booksPanelService;
+    private final IBooksPanelService booksPanelService;
 
     @Autowired
     public BookServicesPanelV1(BooksPanelServiceImpl booksPanelService) {
