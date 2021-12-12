@@ -37,10 +37,10 @@ public class BookServicesPanelV1 {
         BookGlobalV1.addBook.Builder builder = booksPanelService.addBook(addBookModel);
         addBookModel.getOutput().write(builder);
     }
+
+
+
     //TODO list books
     //TODO update book
     //TODO remove book
-    //TODO Admin login
-    //TODO Admin logout
-    //TODO Admin search , users , one user
 }

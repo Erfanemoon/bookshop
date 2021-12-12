@@ -1,6 +1,10 @@
 package erfan.codes.bookshop.repositories.entities;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Table(name = "books")
 @Entity
@@ -8,7 +12,7 @@ public class BookEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private Integer id;
+    private Long id;
 
     @Column(name = "barcode", length = 100)
     private String barcode;
@@ -25,6 +29,13 @@ public class BookEntity {
     @Column(name = "quantity")
     private Integer quantity;
 
+    @ManyToMany(fetch = FetchType.LAZY,
+            cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
+    @JoinTable(name = "user_book",
+            joinColumns = @JoinColumn(name = "book_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"))
+    private Set<UserEntity> users = new HashSet<>();
+
     public BookEntity() {
     }
 
@@ -34,6 +45,14 @@ public class BookEntity {
         this.author = author;
         this.price = price;
         this.quantity = quantity;
+    }
+
+    public Set<UserEntity> getBookOwners() {
+        return users;
+    }
+
+    public void setBookOwners(Set<UserEntity> bookOwners) {
+        this.users = bookOwners;
     }
 
     public Integer getQuantity() {
@@ -76,11 +95,11 @@ public class BookEntity {
         this.barcode = barcode;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 }

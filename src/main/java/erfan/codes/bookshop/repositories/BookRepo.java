@@ -3,24 +3,29 @@ package erfan.codes.bookshop.repositories;
 import erfan.codes.bookshop.proto.holder.BookGlobalV1;
 import erfan.codes.bookshop.repositories.entities.BookEntity;
 import erfan.codes.bookshop.repositories.hibernate.Criteria;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class BookRepo extends ObjectRepo<BookEntity> {
+
+    @Autowired
+    IBookRepo iBookRepo;
 
     public BookRepo(EntityManager em) {
         super(em);
     }
 
-    @Override
+
     @Transactional
     public <S extends BookEntity> S save(S entity) {
-        return super.save(entity);
+        return iBookRepo.save(entity);
     }
 
     @Transactional
@@ -42,6 +47,11 @@ public class BookRepo extends ObjectRepo<BookEntity> {
         dto.setPrice(book.getPrice());
         dto.setQuantity(book.getQuantity());
         return dto;
+    }
+
+    public Optional<BookEntity> findById(Long id) {
+
+        return this.iBookRepo.findById(id);
     }
 
     public enum Fields {

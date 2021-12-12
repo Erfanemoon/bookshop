@@ -2,6 +2,7 @@ package erfan.codes.bookshop.controller.users;
 
 import erfan.codes.bookshop.enums.Return_Status_Codes;
 import erfan.codes.bookshop.general.common.global.SessionUtil;
+import erfan.codes.bookshop.models.SubscriberAddBookModel;
 import erfan.codes.bookshop.models.SubscriberBooksModel;
 import erfan.codes.bookshop.models.SubscriberLoginModel;
 import erfan.codes.bookshop.models.SubscriberRegisterModel;
@@ -15,7 +16,7 @@ import erfan.codes.bookshop.repositories.entities.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.Optional;
+import java.util.*;
 
 @Component
 public class SubscriberServiceImpl implements ISubscriberService {
@@ -65,26 +66,50 @@ public class SubscriberServiceImpl implements ISubscriberService {
     }
 
     @Override
-    public BookGlobalV1.userBooks.Builder subscriberBooklist(SubscriberBooksModel subscriberBooksModel) {
+    public SubscriberGlobalV1.SubscriberInfo.Builder subscriberBooklist(SubscriberBooksModel subscriberBooksModel) {
 
-        BookGlobalV1.userBooks.Builder ret = BookGlobalV1.userBooks.newBuilder();
+        SubscriberGlobalV1.SubscriberInfo.Builder ret = SubscriberGlobalV1.SubscriberInfo.newBuilder();
         if (subscriberBooksModel.getReturn_status_code().getStatus() != Return_Status_Codes.OK_VALID_FORM.getStatus()) {
             return subscriberBooksModel.getOutput().returnResponseObject(ret, subscriberBooksModel.getReturn_status_code());
         }
 
-        Optional<UserEntity> optionalUser = this.userRepo.findById((long) subscriberBooksModel.getSubscriberId());
-        optionalUser.ifPresent(userEntity -> {
-            for (int i = 0; i < userEntity.getSubscriberBooks().size(); i++) {
+        SubscriberGlobalV1.Subscriber.Builder subscriber = this.userRepo.getUserBooks((long) subscriberBooksModel.getSubscriberId());
+        ret.setSubscriber(subscriber);
+//        optionalUser.ifPresent(userEntity -> {
+//            for (int i = 0; i < userEntity.getSubscriberBooks().size(); i++) {
+//
+//                BookEntity book = userEntity.getSubscriberBooks().get(i);
+//                ret.addUserBooks(bookRepo.createBook(book));
+//            }
+//
+//            ret.setUserId(userEntity.getId());
+//        });
 
-                BookEntity book = userEntity.getSubscriberBooks().get(i);
-                ret.addUserBooks(bookRepo.createBook(book));
-            }
-
-            ret.setUserId(userEntity.getId());
-        });
-
-        return ret;
+        return subscriberBooksModel.getOutput().returnResponseObject(ret, subscriberBooksModel.getReturn_status_code());
     }
 
+    @Override
+    public SubscriberGlobalV1.SubscriberAddBook.Builder subscriberAddBook(SubscriberAddBookModel subscriberAddBookModel) {
 
+        SubscriberGlobalV1.SubscriberAddBook.Builder ret = SubscriberGlobalV1.SubscriberAddBook.newBuilder();
+        if (subscriberAddBookModel.getReturn_status_code().getStatus() != Return_Status_Codes.OK_VALID_FORM.getStatus()) {
+            return subscriberAddBookModel.getOutput().returnResponseObject(ret, subscriberAddBookModel.getReturn_status_code());
+        }
+
+        Optional<UserEntity> user = this.userRepo.findById(Long.valueOf(subscriberAddBookModel.getUserId()));
+        UserEntity userEntity = user.get();
+
+        List<BookEntity> books = new ArrayList<>();
+        for (String bookId : subscriberAddBookModel.getBookIds()) {
+            Optional<BookEntity> book = this.bookRepo.findById(Long.valueOf(bookId));
+            BookEntity bookEntity = book.get();
+            books.add(bookEntity);
+        }
+
+        this.userRepo.addUserBooks(userEntity, books);
+
+        SubscriberGlobalV1.Subscriber.Builder userBooksDTO = this.userRepo.createUserBooksDTO(userEntity, userEntity.getBooks());
+        ret.setSubscriber(userBooksDTO);
+        return subscriberAddBookModel.getOutput().returnResponseObject(ret, subscriberAddBookModel.getReturn_status_code());
+    }
 }

@@ -1,24 +1,35 @@
 package erfan.codes.bookshop.repositories;
 
+import erfan.codes.bookshop.proto.holder.BookGlobalV1;
 import erfan.codes.bookshop.proto.holder.SubscriberGlobalV1;
+import erfan.codes.bookshop.repositories.entities.BookEntity;
 import erfan.codes.bookshop.repositories.entities.UserEntity;
 import erfan.codes.bookshop.repositories.hibernate.Criteria;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+import java.util.Set;
+import java.util.stream.Collectors;
 
 @Repository
 public class UserRepo extends ObjectRepo<UserEntity> {
+
+    @Autowired
+    BookRepo bookRepo;
+    @Autowired
+    IUserRepo iUserRepo;
+
     public UserRepo(EntityManager em) {
         super(em);
     }
 
-    @Override
-    @Transactional
     public <S extends UserEntity> S save(S entity) {
-        return super.save(entity);
+        return iUserRepo.save(entity);
     }
 
     @Transactional
@@ -41,6 +52,51 @@ public class UserRepo extends ObjectRepo<UserEntity> {
         dto.setUsername(userEntity1.getUsername());
 
         return dto;
+    }
+
+    public SubscriberGlobalV1.Subscriber.Builder createUserBooksDTO(UserEntity userEntity, Set<BookEntity> books) {
+
+        SubscriberGlobalV1.Subscriber.Builder subscriber = SubscriberGlobalV1.Subscriber.newBuilder();
+
+        subscriber = createUserDTO(userEntity);
+
+        for (BookEntity book : books) {
+            SubscriberGlobalV1.Book.Builder bookDTO = SubscriberGlobalV1.Book.newBuilder();
+
+            bookDTO.setName(book.getName());
+            bookDTO.setId(book.getId());
+            bookDTO.setPrice(book.getPrice());
+            bookDTO.setQuantity(book.getQuantity());
+            bookDTO.setAuthor(book.getAuthor());
+            bookDTO.setBarcode(book.getBarcode());
+            subscriber.addBooks(bookDTO);
+        }
+
+        return subscriber;
+    }
+
+    public Optional<UserEntity> findById(Long id) {
+
+        return this.iUserRepo.findById(id);
+    }
+
+    @Transactional
+    public void addUserBooks(UserEntity userEntity, List<BookEntity> books) {
+        books.stream().map(book -> {
+
+            userEntity.addBook(book);
+            return userEntity;
+        }).collect(Collectors.toSet());
+    }
+
+    public SubscriberGlobalV1.Subscriber.Builder getUserBooks(Long subscriberId) {
+
+        SubscriberGlobalV1.Subscriber.Builder subscriberDTO;
+        Optional<UserEntity> optionalUser = this.iUserRepo.findById(subscriberId);
+        UserEntity userEntity = optionalUser.get();
+        Set<BookEntity> books = userEntity.getBooks();
+        subscriberDTO = this.createUserBooksDTO(userEntity, books);
+        return subscriberDTO;
     }
 
     public enum Fields {

@@ -2,6 +2,7 @@ package erfan.codes.bookshop.services.api;
 
 import erfan.codes.bookshop.controller.users.ISubscriberService;
 import erfan.codes.bookshop.general.common.global.RM;
+import erfan.codes.bookshop.models.SubscriberAddBookModel;
 import erfan.codes.bookshop.models.SubscriberBooksModel;
 import erfan.codes.bookshop.models.SubscriberLoginModel;
 import erfan.codes.bookshop.models.SubscriberRegisterModel;
@@ -56,14 +57,29 @@ public class SubscriberServicesApiV1 {
     @RM(
             isSessionValidationRequired = true,
             title = "api_v1_subscriber_booklist",
-            protocolBufferReturn = SubscriberGlobalV1.loginSubscriber.class,
-            value = "/books/list",
+            protocolBufferReturn = SubscriberGlobalV1.SubscriberInfo.class,
+            value = "/books/list/",
             method = {RequestMethod.POST},
             produces = {MediaType.APPLICATION_JSON_VALUE}
     )
     @ResponseBody
     public void subscriberBooklist(SubscriberBooksModel subscriberBooksModel) {
-        BookGlobalV1.userBooks.Builder builder = subscriberService.subscriberBooklist(subscriberBooksModel);
+        SubscriberGlobalV1.SubscriberInfo.Builder builder = subscriberService.subscriberBooklist(subscriberBooksModel);
         subscriberBooksModel.getOutput().write(builder);
+    }
+
+
+    @RM(
+            isSessionValidationRequired = true,
+            title = "api_v1_subscriber_addbook",
+            protocolBufferReturn = SubscriberGlobalV1.SubscriberAddBook.class,
+            value = "/books/add/",
+            method = {RequestMethod.POST},
+            produces = {MediaType.APPLICATION_JSON_VALUE}
+    )
+    @ResponseBody
+    public void subscriberAddBook(SubscriberAddBookModel subscriberAddBookModel) {
+        SubscriberGlobalV1.SubscriberAddBook.Builder builder = subscriberService.subscriberAddBook(subscriberAddBookModel);
+        subscriberAddBookModel.getOutput().write(builder);
     }
 }

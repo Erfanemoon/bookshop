@@ -8,7 +8,9 @@ public enum Return_Status_Codes implements IReturn_Status_Codes {
     INVALID_SUBSCRIBER_INFORMATION(400, "the inserted data is not complete or valid , please check"),
     LOGIN_CREDENTIAL_NOT_VALID(400, "the credentials provided for login are wrong"),
     SC_FORBIDDEN(403, "the user did not provide the sessionId to login into the system"),
-    SESSION_NO_LONGER_VALID(403, "sessionId is no longer valid");
+    SESSION_NO_LONGER_VALID(403, "sessionId is no longer valid"),
+    INVALID_BOOK_INFORMATION(400, "the book data is not valid , please check"),
+    NO_BOOK_FOUND_FOR_SUBSCRIBER(200, "no book added by this subscriber");
 
     private String messageKey;
     private int statusCode;

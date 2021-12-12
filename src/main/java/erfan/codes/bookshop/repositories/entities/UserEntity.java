@@ -2,8 +2,8 @@ package erfan.codes.bookshop.repositories.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Table(name = "users")
 @Entity
@@ -11,7 +11,7 @@ public class UserEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
-    private Integer id;
+    private Long id;
 
     @Column(name = "username", length = 100)
     private String username;
@@ -41,9 +41,9 @@ public class UserEntity implements Serializable {
     @ManyToMany(fetch = FetchType.LAZY,
             cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
     @JoinTable(name = "user_book",
-            joinColumns = @JoinColumn(name = "userId"),
-            inverseJoinColumns = @JoinColumn(name = "bookId"))
-    private List<BookEntity> subscriberBooks;
+            joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name = "book_id", referencedColumnName = "id"))
+    private Set<BookEntity> books = new HashSet<>();
 
 
     public UserEntity() {
@@ -59,15 +59,16 @@ public class UserEntity implements Serializable {
         this.mailid = mailid;
     }
 
-    public List<BookEntity> getSubscriberBooks() {
-
-        if (this.subscriberBooks == null || this.subscriberBooks.isEmpty())
-            return new ArrayList<>();
-        return subscriberBooks;
+    public void addBook(BookEntity book) {
+        this.books.add(book);
     }
 
-    public void setSubscriberBooks(List<BookEntity> subscriberBooks) {
-        this.subscriberBooks = subscriberBooks;
+    public Set<BookEntity> getBooks() {
+        return books;
+    }
+
+    public void setBooks(Set<BookEntity> books) {
+        this.books = books;
     }
 
     public Integer getUsertype() {
@@ -134,11 +135,11 @@ public class UserEntity implements Serializable {
         this.username = username;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 }

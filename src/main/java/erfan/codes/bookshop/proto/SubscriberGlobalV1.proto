@@ -10,11 +10,36 @@ message Subscriber{
   string address = 6;
   string phone = 7;
   string email = 8;
+  repeated Book books = 9;
 }
 
 message addSubscriber{
   int32 status = 1;
   int32 code = 2;
+  string message = 3;
+  Subscriber subscriber = 4;
+}
+
+message SubscriberAddBook{
+  int32 status = 1;
+  int32 code = 2;
+  string message = 3;
+  Subscriber subscriber = 4;
+}
+
+message Book {
+  int64 id = 1;
+  string barcode = 2;
+  string author = 3;
+  string name = 4;
+  int64 price = 5;
+  int64 quantity = 6;
+}
+
+message SubscriberInfo{
+
+  int32 status = 1;
+  int32  code = 2;
   string message = 3;
   Subscriber subscriber = 4;
 }
