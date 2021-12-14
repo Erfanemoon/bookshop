@@ -89,6 +89,7 @@ public class UserRepo extends ObjectRepo<UserEntity> {
         }).collect(Collectors.toSet());
     }
 
+    @Transactional
     public SubscriberGlobalV1.Subscriber.Builder getUserBooks(Long subscriberId) {
 
         SubscriberGlobalV1.Subscriber.Builder subscriberDTO;
@@ -96,6 +97,21 @@ public class UserRepo extends ObjectRepo<UserEntity> {
         UserEntity userEntity = optionalUser.get();
         Set<BookEntity> books = userEntity.getBooks();
         subscriberDTO = this.createUserBooksDTO(userEntity, books);
+        return subscriberDTO;
+    }
+
+    public SubscriberGlobalV1.Subscriber.Builder deleteSubscriberBook(long userId, long bookId) {
+
+        SubscriberGlobalV1.Subscriber.Builder subscriberDTO;
+        Optional<UserEntity> optionalUser = this.findById(userId);
+        UserEntity userEntity = optionalUser.get();
+        Optional<BookEntity> optionalBook = this.bookRepo.findById(bookId);
+        BookEntity bookEntity = optionalBook.get();
+        userEntity.getBooks().remove(bookEntity);
+
+        this.save(userEntity);
+
+        subscriberDTO = this.createUserBooksDTO(userEntity, userEntity.getBooks());
         return subscriberDTO;
     }
 

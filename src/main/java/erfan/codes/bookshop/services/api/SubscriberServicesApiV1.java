@@ -2,10 +2,7 @@ package erfan.codes.bookshop.services.api;
 
 import erfan.codes.bookshop.controller.users.ISubscriberService;
 import erfan.codes.bookshop.general.common.global.RM;
-import erfan.codes.bookshop.models.SubscriberAddBookModel;
-import erfan.codes.bookshop.models.SubscriberBooksModel;
-import erfan.codes.bookshop.models.SubscriberLoginModel;
-import erfan.codes.bookshop.models.SubscriberRegisterModel;
+import erfan.codes.bookshop.models.*;
 import erfan.codes.bookshop.proto.holder.BookGlobalV1;
 import erfan.codes.bookshop.proto.holder.SubscriberGlobalV1;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -81,5 +78,21 @@ public class SubscriberServicesApiV1 {
     public void subscriberAddBook(SubscriberAddBookModel subscriberAddBookModel) {
         SubscriberGlobalV1.SubscriberAddBook.Builder builder = subscriberService.subscriberAddBook(subscriberAddBookModel);
         subscriberAddBookModel.getOutput().write(builder);
+    }
+
+    @RM(
+
+            isSessionValidationRequired = true,
+            title = "api_v1_subsriber_deletebook",
+            protocolBufferReturn = SubscriberGlobalV1.SubscriberInfo.class,
+            value = "/books/delete",
+            method = {RequestMethod.POST},
+            produces = {MediaType.APPLICATION_JSON_VALUE}
+    )
+    @ResponseBody
+    public void subscriberDeleteBook(SubscriberDeleteBookModel subscriberDeleteBook) {
+
+        SubscriberGlobalV1.SubscriberInfo.Builder builder = subscriberService.subscriberDeleteBook(subscriberDeleteBook);
+        subscriberDeleteBook.getOutput().write(builder);
     }
 }

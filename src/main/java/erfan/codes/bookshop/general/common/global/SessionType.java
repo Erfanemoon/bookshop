@@ -4,7 +4,8 @@ import erfan.codes.bookshop.general.General;
 
 public enum SessionType {
     Undefined(""),
-    Subscribers("subscribers");
+    Subscribers("subscribers"),
+    ADMINS("admins");
 
     private String value;
 

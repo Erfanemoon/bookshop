@@ -1,11 +1,9 @@
 package erfan.codes.bookshop.controller.users;
 
 import erfan.codes.bookshop.enums.Return_Status_Codes;
+import erfan.codes.bookshop.general.General;
 import erfan.codes.bookshop.general.common.global.SessionUtil;
-import erfan.codes.bookshop.models.SubscriberAddBookModel;
-import erfan.codes.bookshop.models.SubscriberBooksModel;
-import erfan.codes.bookshop.models.SubscriberLoginModel;
-import erfan.codes.bookshop.models.SubscriberRegisterModel;
+import erfan.codes.bookshop.models.*;
 import erfan.codes.bookshop.proto.holder.BookGlobalV1;
 import erfan.codes.bookshop.proto.holder.Global;
 import erfan.codes.bookshop.proto.holder.SubscriberGlobalV1;
@@ -62,7 +60,19 @@ public class SubscriberServiceImpl implements ISubscriberService {
         UserEntity entity = userRepo.findbyUsername(subscriberLoginModel.getUsername()).get(0);
         SubscriberGlobalV1.Subscriber.Builder userDTO = userRepo.createUserDTO(entity);
         ret.setSubscriber(userDTO);
-        return ret;
+
+        Global.SessionModel sessionModel = SessionUtil.getAndValidateSession(subscriberLoginModel.getSessionId());
+
+        if (sessionModel == null)
+            return subscriberLoginModel.getOutput().returnResponseObject(ret, Return_Status_Codes.SC_FORBIDDEN);
+
+        long validUntil = sessionModel.getValidUntil();
+        Date now = new Date();
+        long l = now.getTime() / 1000;
+        if (l > validUntil)
+            SessionUtil.updateSessionExpireDate(sessionModel);
+
+        return subscriberLoginModel.getOutput().returnResponseObject(ret, subscriberLoginModel.getReturn_status_code());
     }
 
     @Override
@@ -111,5 +121,21 @@ public class SubscriberServiceImpl implements ISubscriberService {
         SubscriberGlobalV1.Subscriber.Builder userBooksDTO = this.userRepo.createUserBooksDTO(userEntity, userEntity.getBooks());
         ret.setSubscriber(userBooksDTO);
         return subscriberAddBookModel.getOutput().returnResponseObject(ret, subscriberAddBookModel.getReturn_status_code());
+    }
+
+    @Override
+    public SubscriberGlobalV1.SubscriberInfo.Builder subscriberDeleteBook(SubscriberDeleteBookModel subscriberDeleteBookModel) {
+
+        SubscriberGlobalV1.SubscriberInfo.Builder ret = SubscriberGlobalV1.SubscriberInfo.newBuilder();
+        if (subscriberDeleteBookModel.getReturn_status_code().getStatus() != Return_Status_Codes.OK_VALID_FORM.getStatus()) {
+            return subscriberDeleteBookModel.getOutput().returnResponseObject(ret, subscriberDeleteBookModel.getReturn_status_code());
+        }
+
+        SubscriberGlobalV1.Subscriber.Builder subscriber = this.userRepo.
+                deleteSubscriberBook(Long.parseLong(subscriberDeleteBookModel.getSubscriberId()),
+                        Long.parseLong(subscriberDeleteBookModel.getBookId()));
+
+        ret.setSubscriber(subscriber);
+        return subscriberDeleteBookModel.getOutput().returnResponseObject(ret, subscriberDeleteBookModel.getReturn_status_code());
     }
 }

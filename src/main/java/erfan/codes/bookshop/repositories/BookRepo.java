@@ -37,6 +37,11 @@ public class BookRepo extends ObjectRepo<BookEntity> {
         return criteria.query().getResultList();
     }
 
+    @Transactional
+    public List<BookEntity> booksList() {
+        return this.iBookRepo.findAll();
+    }
+
     public BookGlobalV1.Book.Builder createBook(BookEntity book) {
 
         BookGlobalV1.Book.Builder dto = BookGlobalV1.Book.newBuilder();
@@ -52,6 +57,17 @@ public class BookRepo extends ObjectRepo<BookEntity> {
     public Optional<BookEntity> findById(Long id) {
 
         return this.iBookRepo.findById(id);
+    }
+
+    public BookGlobalV1.BookList.Builder createBookList(List<BookEntity> bookEntities) {
+
+        BookGlobalV1.BookList.Builder bookDTO = BookGlobalV1.BookList.newBuilder();
+        for (BookEntity book : bookEntities) {
+            BookGlobalV1.Book.Builder book1 = createBook(book);
+            bookDTO.addData(book1);
+        }
+
+        return bookDTO;
     }
 
     public enum Fields {

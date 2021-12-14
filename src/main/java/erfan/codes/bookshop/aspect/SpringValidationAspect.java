@@ -3,6 +3,7 @@ package erfan.codes.bookshop.aspect;
 import erfan.codes.bookshop.enums.Return_Status_Codes;
 import erfan.codes.bookshop.general.General;
 import erfan.codes.bookshop.general.common.global.RM;
+import erfan.codes.bookshop.general.common.global.SessionType;
 import erfan.codes.bookshop.general.common.global.SessionUtil;
 import erfan.codes.bookshop.general.common.global.config.ConfigReader;
 import erfan.codes.bookshop.models.BaseInputModel;
@@ -20,7 +21,6 @@ import org.springframework.validation.Validator;
 import org.springframework.web.servlet.HandlerMapping;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -59,19 +59,19 @@ public class SpringValidationAspect {
                         General.writeErrorOutput(Return_Status_Codes.SC_FORBIDDEN);
                     } else {
                         Global.SessionModel sessionModel = SessionUtil.getAndValidateSession(sessionId);
-                        if (sessionModel == null)
-                            General.writeErrorOutput(Return_Status_Codes.SC_FORBIDDEN);
-                        else {
+                        if (sessionModel != null) {
+                            boolean hasAccess = checkSessionPrivileges(sessionModel, uri);
+                            if (!hasAccess)
+                                General.writeErrorOutput(Return_Status_Codes.SC_FORBIDDEN);
+
                             long validUntil = sessionModel.getValidUntil();
                             Date now = new Date();
                             long l = now.getTime() / 1000;
-                            if (l > validUntil) {
-                                if (uri.contains("/login/")) {
-                                    SessionUtil.updateSessionExpireDate(sessionModel);
-                                }
+                            if (l > validUntil && !uri.contains("/login/")) {
                                 General.writeErrorOutput(Return_Status_Codes.SESSION_NO_LONGER_VALID);
                             }
-                        }
+                        } else
+                            General.writeErrorOutput(Return_Status_Codes.SC_FORBIDDEN);
                     }
                 }
             }
@@ -79,6 +79,12 @@ public class SpringValidationAspect {
             return aJoinPoint.proceed();
         }
         return null;
+    }
+
+    private boolean checkSessionPrivileges(Global.SessionModel sessionModel, String uri) {
+
+        String sessionType = sessionModel.getSessionType();
+        return !uri.contains("/apipanel/") || !sessionType.equals(SessionType.Subscribers.getValue());
     }
 
     private void validate(JoinPoint aJoinPoint) {

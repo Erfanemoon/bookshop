@@ -1,9 +1,6 @@
 package erfan.codes.bookshop.controller.users;
 
-import erfan.codes.bookshop.models.SubscriberAddBookModel;
-import erfan.codes.bookshop.models.SubscriberBooksModel;
-import erfan.codes.bookshop.models.SubscriberLoginModel;
-import erfan.codes.bookshop.models.SubscriberRegisterModel;
+import erfan.codes.bookshop.models.*;
 import erfan.codes.bookshop.proto.holder.BookGlobalV1;
 import erfan.codes.bookshop.proto.holder.SubscriberGlobalV1;
 
@@ -17,4 +14,5 @@ public interface ISubscriberService {
 
     SubscriberGlobalV1.SubscriberAddBook.Builder subscriberAddBook(SubscriberAddBookModel subscriberAddBookModel);
 
+    SubscriberGlobalV1.SubscriberInfo.Builder subscriberDeleteBook(SubscriberDeleteBookModel subscriberDeleteBook);
 }
