@@ -10,7 +10,8 @@ public enum Return_Status_Codes implements IReturn_Status_Codes {
     SC_FORBIDDEN(403, "the user did not provide the sessionId to login into the system"),
     SESSION_NO_LONGER_VALID(403, "sessionId is no longer valid"),
     INVALID_BOOK_INFORMATION(400, "the book data is not valid , please check"),
-    NO_BOOK_FOUND_FOR_SUBSCRIBER(200, "no book added by this subscriber");
+    NO_BOOK_FOUND_FOR_SUBSCRIBER(200, "no book added by this subscriber"),
+    NO_BOOK_FOUND(400, "no book found with this id");
 
     private String messageKey;
     private int statusCode;

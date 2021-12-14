@@ -2,16 +2,15 @@ package erfan.codes.bookshop.services.api;
 
 import erfan.codes.bookshop.controller.books.IBookService;
 import erfan.codes.bookshop.general.common.global.RM;
+import erfan.codes.bookshop.models.BookGetModel;
 import erfan.codes.bookshop.models.ListBooksModel;
 import erfan.codes.bookshop.proto.holder.BookGlobalV1;
-import erfan.codes.bookshop.proto.holder.SubscriberGlobalV1;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
 
 @Controller
 @RequestMapping(value = "/api/v1/books/")
@@ -38,17 +37,19 @@ public class BookServicesApiV1 {
         listBooksModel.getOutput().write(builder);
     }
 
-//    @RM(
-//            isSessionValidationRequired = false,
-//            title = "api_v1_subscribers_register",
-//            protocolBufferReturn = SubscriberGlobalV1.addSubscriber.class,
-//            value = "/add/",
-//            method = {RequestMethod.POST},
-//            produces = {MediaType.APPLICATION_JSON_VALUE}
-//    )
-//    @ResponseBody
-//    public void getBook(GetBookModel getBookModel) {
-//    }
+    @RM(
+            isSessionValidationRequired = false,
+            title = "api_v1_book_get",
+            protocolBufferReturn = BookGlobalV1.GetBook.class,
+            value = "/get/",
+            method = {RequestMethod.POST},
+            produces = {MediaType.APPLICATION_JSON_VALUE}
+    )
+    @ResponseBody
+    public void getBook(BookGetModel bookGetModel) {
+
+        BookGlobalV1.GetBook.Builder builder = this.iBookService.getBook(bookGetModel);
+    }
 
     //TODO user view books service
     //TODO user buy books service

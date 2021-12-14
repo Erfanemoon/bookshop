@@ -1126,6 +1126,876 @@ public final class BookGlobalV1 {
 
   }
 
+  public interface GetBookOrBuilder extends
+      // @@protoc_insertion_point(interface_extends:erfan.codes.bookshop.proto.holder.GetBook)
+      com.google.protobuf.MessageOrBuilder {
+
+    /**
+     * <code>int32 status = 1;</code>
+     */
+    int getStatus();
+
+    /**
+     * <code>int32 code = 2;</code>
+     */
+    int getCode();
+
+    /**
+     * <code>string msg = 3;</code>
+     */
+    java.lang.String getMsg();
+    /**
+     * <code>string msg = 3;</code>
+     */
+    com.google.protobuf.ByteString
+        getMsgBytes();
+
+    /**
+     * <code>.erfan.codes.bookshop.proto.holder.Book book = 4;</code>
+     */
+    boolean hasBook();
+    /**
+     * <code>.erfan.codes.bookshop.proto.holder.Book book = 4;</code>
+     */
+    erfan.codes.bookshop.proto.holder.BookGlobalV1.Book getBook();
+    /**
+     * <code>.erfan.codes.bookshop.proto.holder.Book book = 4;</code>
+     */
+    erfan.codes.bookshop.proto.holder.BookGlobalV1.BookOrBuilder getBookOrBuilder();
+  }
+  /**
+   * Protobuf type {@code erfan.codes.bookshop.proto.holder.GetBook}
+   */
+  public  static final class GetBook extends
+      com.google.protobuf.GeneratedMessageV3 implements
+      // @@protoc_insertion_point(message_implements:erfan.codes.bookshop.proto.holder.GetBook)
+      GetBookOrBuilder {
+  private static final long serialVersionUID = 0L;
+    // Use GetBook.newBuilder() to construct.
+    private GetBook(com.google.protobuf.GeneratedMessageV3.Builder<?> builder) {
+      super(builder);
+    }
+    private GetBook() {
+      status_ = 0;
+      code_ = 0;
+      msg_ = "";
+    }
+
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+    getUnknownFields() {
+      return this.unknownFields;
+    }
+    private GetBook(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      this();
+      if (extensionRegistry == null) {
+        throw new java.lang.NullPointerException();
+      }
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            case 8: {
+
+              status_ = input.readInt32();
+              break;
+            }
+            case 16: {
+
+              code_ = input.readInt32();
+              break;
+            }
+            case 26: {
+              java.lang.String s = input.readStringRequireUtf8();
+
+              msg_ = s;
+              break;
+            }
+            case 34: {
+              erfan.codes.bookshop.proto.holder.BookGlobalV1.Book.Builder subBuilder = null;
+              if (book_ != null) {
+                subBuilder = book_.toBuilder();
+              }
+              book_ = input.readMessage(erfan.codes.bookshop.proto.holder.BookGlobalV1.Book.parser(), extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(book_);
+                book_ = subBuilder.buildPartial();
+              }
+
+              break;
+            }
+            default: {
+              if (!parseUnknownFieldProto3(
+                  input, unknownFields, extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return erfan.codes.bookshop.proto.holder.BookGlobalV1.internal_static_erfan_codes_bookshop_proto_holder_GetBook_descriptor;
+    }
+
+    @java.lang.Override
+    protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return erfan.codes.bookshop.proto.holder.BookGlobalV1.internal_static_erfan_codes_bookshop_proto_holder_GetBook_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              erfan.codes.bookshop.proto.holder.BookGlobalV1.GetBook.class, erfan.codes.bookshop.proto.holder.BookGlobalV1.GetBook.Builder.class);
+    }
+
+    public static final int STATUS_FIELD_NUMBER = 1;
+    private int status_;
+    /**
+     * <code>int32 status = 1;</code>
+     */
+    public int getStatus() {
+      return status_;
+    }
+
+    public static final int CODE_FIELD_NUMBER = 2;
+    private int code_;
+    /**
+     * <code>int32 code = 2;</code>
+     */
+    public int getCode() {
+      return code_;
+    }
+
+    public static final int MSG_FIELD_NUMBER = 3;
+    private volatile java.lang.Object msg_;
+    /**
+     * <code>string msg = 3;</code>
+     */
+    public java.lang.String getMsg() {
+      java.lang.Object ref = msg_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        msg_ = s;
+        return s;
+      }
+    }
+    /**
+     * <code>string msg = 3;</code>
+     */
+    public com.google.protobuf.ByteString
+        getMsgBytes() {
+      java.lang.Object ref = msg_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        msg_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    public static final int BOOK_FIELD_NUMBER = 4;
+    private erfan.codes.bookshop.proto.holder.BookGlobalV1.Book book_;
+    /**
+     * <code>.erfan.codes.bookshop.proto.holder.Book book = 4;</code>
+     */
+    public boolean hasBook() {
+      return book_ != null;
+    }
+    /**
+     * <code>.erfan.codes.bookshop.proto.holder.Book book = 4;</code>
+     */
+    public erfan.codes.bookshop.proto.holder.BookGlobalV1.Book getBook() {
+      return book_ == null ? erfan.codes.bookshop.proto.holder.BookGlobalV1.Book.getDefaultInstance() : book_;
+    }
+    /**
+     * <code>.erfan.codes.bookshop.proto.holder.Book book = 4;</code>
+     */
+    public erfan.codes.bookshop.proto.holder.BookGlobalV1.BookOrBuilder getBookOrBuilder() {
+      return getBook();
+    }
+
+    private byte memoizedIsInitialized = -1;
+    @java.lang.Override
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized == 1) return true;
+      if (isInitialized == 0) return false;
+
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    @java.lang.Override
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      if (status_ != 0) {
+        output.writeInt32(1, status_);
+      }
+      if (code_ != 0) {
+        output.writeInt32(2, code_);
+      }
+      if (!getMsgBytes().isEmpty()) {
+        com.google.protobuf.GeneratedMessageV3.writeString(output, 3, msg_);
+      }
+      if (book_ != null) {
+        output.writeMessage(4, getBook());
+      }
+      unknownFields.writeTo(output);
+    }
+
+    @java.lang.Override
+    public int getSerializedSize() {
+      int size = memoizedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (status_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, status_);
+      }
+      if (code_ != 0) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, code_);
+      }
+      if (!getMsgBytes().isEmpty()) {
+        size += com.google.protobuf.GeneratedMessageV3.computeStringSize(3, msg_);
+      }
+      if (book_ != null) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(4, getBook());
+      }
+      size += unknownFields.getSerializedSize();
+      memoizedSize = size;
+      return size;
+    }
+
+    @java.lang.Override
+    public boolean equals(final java.lang.Object obj) {
+      if (obj == this) {
+       return true;
+      }
+      if (!(obj instanceof erfan.codes.bookshop.proto.holder.BookGlobalV1.GetBook)) {
+        return super.equals(obj);
+      }
+      erfan.codes.bookshop.proto.holder.BookGlobalV1.GetBook other = (erfan.codes.bookshop.proto.holder.BookGlobalV1.GetBook) obj;
+
+      boolean result = true;
+      result = result && (getStatus()
+          == other.getStatus());
+      result = result && (getCode()
+          == other.getCode());
+      result = result && getMsg()
+          .equals(other.getMsg());
+      result = result && (hasBook() == other.hasBook());
+      if (hasBook()) {
+        result = result && getBook()
+            .equals(other.getBook());
+      }
+      result = result && unknownFields.equals(other.unknownFields);
+      return result;
+    }
+
+    @java.lang.Override
+    public int hashCode() {
+      if (memoizedHashCode != 0) {
+        return memoizedHashCode;
+      }
+      int hash = 41;
+      hash = (19 * hash) + getDescriptor().hashCode();
+      hash = (37 * hash) + STATUS_FIELD_NUMBER;
+      hash = (53 * hash) + getStatus();
+      hash = (37 * hash) + CODE_FIELD_NUMBER;
+      hash = (53 * hash) + getCode();
+      hash = (37 * hash) + MSG_FIELD_NUMBER;
+      hash = (53 * hash) + getMsg().hashCode();
+      if (hasBook()) {
+        hash = (37 * hash) + BOOK_FIELD_NUMBER;
+        hash = (53 * hash) + getBook().hashCode();
+      }
+      hash = (29 * hash) + unknownFields.hashCode();
+      memoizedHashCode = hash;
+      return hash;
+    }
+
+    public static erfan.codes.bookshop.proto.holder.BookGlobalV1.GetBook parseFrom(
+        java.nio.ByteBuffer data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static erfan.codes.bookshop.proto.holder.BookGlobalV1.GetBook parseFrom(
+        java.nio.ByteBuffer data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static erfan.codes.bookshop.proto.holder.BookGlobalV1.GetBook parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static erfan.codes.bookshop.proto.holder.BookGlobalV1.GetBook parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static erfan.codes.bookshop.proto.holder.BookGlobalV1.GetBook parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static erfan.codes.bookshop.proto.holder.BookGlobalV1.GetBook parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static erfan.codes.bookshop.proto.holder.BookGlobalV1.GetBook parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static erfan.codes.bookshop.proto.holder.BookGlobalV1.GetBook parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static erfan.codes.bookshop.proto.holder.BookGlobalV1.GetBook parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input);
+    }
+    public static erfan.codes.bookshop.proto.holder.BookGlobalV1.GetBook parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseDelimitedWithIOException(PARSER, input, extensionRegistry);
+    }
+    public static erfan.codes.bookshop.proto.holder.BookGlobalV1.GetBook parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input);
+    }
+    public static erfan.codes.bookshop.proto.holder.BookGlobalV1.GetBook parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return com.google.protobuf.GeneratedMessageV3
+          .parseWithIOException(PARSER, input, extensionRegistry);
+    }
+
+    @java.lang.Override
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder() {
+      return DEFAULT_INSTANCE.toBuilder();
+    }
+    public static Builder newBuilder(erfan.codes.bookshop.proto.holder.BookGlobalV1.GetBook prototype) {
+      return DEFAULT_INSTANCE.toBuilder().mergeFrom(prototype);
+    }
+    @java.lang.Override
+    public Builder toBuilder() {
+      return this == DEFAULT_INSTANCE
+          ? new Builder() : new Builder().mergeFrom(this);
+    }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code erfan.codes.bookshop.proto.holder.GetBook}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessageV3.Builder<Builder> implements
+        // @@protoc_insertion_point(builder_implements:erfan.codes.bookshop.proto.holder.GetBook)
+        erfan.codes.bookshop.proto.holder.BookGlobalV1.GetBookOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return erfan.codes.bookshop.proto.holder.BookGlobalV1.internal_static_erfan_codes_bookshop_proto_holder_GetBook_descriptor;
+      }
+
+      @java.lang.Override
+      protected com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return erfan.codes.bookshop.proto.holder.BookGlobalV1.internal_static_erfan_codes_bookshop_proto_holder_GetBook_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                erfan.codes.bookshop.proto.holder.BookGlobalV1.GetBook.class, erfan.codes.bookshop.proto.holder.BookGlobalV1.GetBook.Builder.class);
+      }
+
+      // Construct using erfan.codes.bookshop.proto.holder.BookGlobalV1.GetBook.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessageV3.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessageV3
+                .alwaysUseFieldBuilders) {
+        }
+      }
+      @java.lang.Override
+      public Builder clear() {
+        super.clear();
+        status_ = 0;
+
+        code_ = 0;
+
+        msg_ = "";
+
+        if (bookBuilder_ == null) {
+          book_ = null;
+        } else {
+          book_ = null;
+          bookBuilder_ = null;
+        }
+        return this;
+      }
+
+      @java.lang.Override
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return erfan.codes.bookshop.proto.holder.BookGlobalV1.internal_static_erfan_codes_bookshop_proto_holder_GetBook_descriptor;
+      }
+
+      @java.lang.Override
+      public erfan.codes.bookshop.proto.holder.BookGlobalV1.GetBook getDefaultInstanceForType() {
+        return erfan.codes.bookshop.proto.holder.BookGlobalV1.GetBook.getDefaultInstance();
+      }
+
+      @java.lang.Override
+      public erfan.codes.bookshop.proto.holder.BookGlobalV1.GetBook build() {
+        erfan.codes.bookshop.proto.holder.BookGlobalV1.GetBook result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      @java.lang.Override
+      public erfan.codes.bookshop.proto.holder.BookGlobalV1.GetBook buildPartial() {
+        erfan.codes.bookshop.proto.holder.BookGlobalV1.GetBook result = new erfan.codes.bookshop.proto.holder.BookGlobalV1.GetBook(this);
+        result.status_ = status_;
+        result.code_ = code_;
+        result.msg_ = msg_;
+        if (bookBuilder_ == null) {
+          result.book_ = book_;
+        } else {
+          result.book_ = bookBuilder_.build();
+        }
+        onBuilt();
+        return result;
+      }
+
+      @java.lang.Override
+      public Builder clone() {
+        return (Builder) super.clone();
+      }
+      @java.lang.Override
+      public Builder setField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.setField(field, value);
+      }
+      @java.lang.Override
+      public Builder clearField(
+          com.google.protobuf.Descriptors.FieldDescriptor field) {
+        return (Builder) super.clearField(field);
+      }
+      @java.lang.Override
+      public Builder clearOneof(
+          com.google.protobuf.Descriptors.OneofDescriptor oneof) {
+        return (Builder) super.clearOneof(oneof);
+      }
+      @java.lang.Override
+      public Builder setRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          int index, java.lang.Object value) {
+        return (Builder) super.setRepeatedField(field, index, value);
+      }
+      @java.lang.Override
+      public Builder addRepeatedField(
+          com.google.protobuf.Descriptors.FieldDescriptor field,
+          java.lang.Object value) {
+        return (Builder) super.addRepeatedField(field, value);
+      }
+      @java.lang.Override
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof erfan.codes.bookshop.proto.holder.BookGlobalV1.GetBook) {
+          return mergeFrom((erfan.codes.bookshop.proto.holder.BookGlobalV1.GetBook)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(erfan.codes.bookshop.proto.holder.BookGlobalV1.GetBook other) {
+        if (other == erfan.codes.bookshop.proto.holder.BookGlobalV1.GetBook.getDefaultInstance()) return this;
+        if (other.getStatus() != 0) {
+          setStatus(other.getStatus());
+        }
+        if (other.getCode() != 0) {
+          setCode(other.getCode());
+        }
+        if (!other.getMsg().isEmpty()) {
+          msg_ = other.msg_;
+          onChanged();
+        }
+        if (other.hasBook()) {
+          mergeBook(other.getBook());
+        }
+        this.mergeUnknownFields(other.unknownFields);
+        onChanged();
+        return this;
+      }
+
+      @java.lang.Override
+      public final boolean isInitialized() {
+        return true;
+      }
+
+      @java.lang.Override
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        erfan.codes.bookshop.proto.holder.BookGlobalV1.GetBook parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (erfan.codes.bookshop.proto.holder.BookGlobalV1.GetBook) e.getUnfinishedMessage();
+          throw e.unwrapIOException();
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+
+      private int status_ ;
+      /**
+       * <code>int32 status = 1;</code>
+       */
+      public int getStatus() {
+        return status_;
+      }
+      /**
+       * <code>int32 status = 1;</code>
+       */
+      public Builder setStatus(int value) {
+        
+        status_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 status = 1;</code>
+       */
+      public Builder clearStatus() {
+        
+        status_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private int code_ ;
+      /**
+       * <code>int32 code = 2;</code>
+       */
+      public int getCode() {
+        return code_;
+      }
+      /**
+       * <code>int32 code = 2;</code>
+       */
+      public Builder setCode(int value) {
+        
+        code_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>int32 code = 2;</code>
+       */
+      public Builder clearCode() {
+        
+        code_ = 0;
+        onChanged();
+        return this;
+      }
+
+      private java.lang.Object msg_ = "";
+      /**
+       * <code>string msg = 3;</code>
+       */
+      public java.lang.String getMsg() {
+        java.lang.Object ref = msg_;
+        if (!(ref instanceof java.lang.String)) {
+          com.google.protobuf.ByteString bs =
+              (com.google.protobuf.ByteString) ref;
+          java.lang.String s = bs.toStringUtf8();
+          msg_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>string msg = 3;</code>
+       */
+      public com.google.protobuf.ByteString
+          getMsgBytes() {
+        java.lang.Object ref = msg_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          msg_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>string msg = 3;</code>
+       */
+      public Builder setMsg(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  
+        msg_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string msg = 3;</code>
+       */
+      public Builder clearMsg() {
+        
+        msg_ = getDefaultInstance().getMsg();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>string msg = 3;</code>
+       */
+      public Builder setMsgBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  checkByteStringIsUtf8(value);
+        
+        msg_ = value;
+        onChanged();
+        return this;
+      }
+
+      private erfan.codes.bookshop.proto.holder.BookGlobalV1.Book book_ = null;
+      private com.google.protobuf.SingleFieldBuilderV3<
+          erfan.codes.bookshop.proto.holder.BookGlobalV1.Book, erfan.codes.bookshop.proto.holder.BookGlobalV1.Book.Builder, erfan.codes.bookshop.proto.holder.BookGlobalV1.BookOrBuilder> bookBuilder_;
+      /**
+       * <code>.erfan.codes.bookshop.proto.holder.Book book = 4;</code>
+       */
+      public boolean hasBook() {
+        return bookBuilder_ != null || book_ != null;
+      }
+      /**
+       * <code>.erfan.codes.bookshop.proto.holder.Book book = 4;</code>
+       */
+      public erfan.codes.bookshop.proto.holder.BookGlobalV1.Book getBook() {
+        if (bookBuilder_ == null) {
+          return book_ == null ? erfan.codes.bookshop.proto.holder.BookGlobalV1.Book.getDefaultInstance() : book_;
+        } else {
+          return bookBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>.erfan.codes.bookshop.proto.holder.Book book = 4;</code>
+       */
+      public Builder setBook(erfan.codes.bookshop.proto.holder.BookGlobalV1.Book value) {
+        if (bookBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          book_ = value;
+          onChanged();
+        } else {
+          bookBuilder_.setMessage(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.erfan.codes.bookshop.proto.holder.Book book = 4;</code>
+       */
+      public Builder setBook(
+          erfan.codes.bookshop.proto.holder.BookGlobalV1.Book.Builder builderForValue) {
+        if (bookBuilder_ == null) {
+          book_ = builderForValue.build();
+          onChanged();
+        } else {
+          bookBuilder_.setMessage(builderForValue.build());
+        }
+
+        return this;
+      }
+      /**
+       * <code>.erfan.codes.bookshop.proto.holder.Book book = 4;</code>
+       */
+      public Builder mergeBook(erfan.codes.bookshop.proto.holder.BookGlobalV1.Book value) {
+        if (bookBuilder_ == null) {
+          if (book_ != null) {
+            book_ =
+              erfan.codes.bookshop.proto.holder.BookGlobalV1.Book.newBuilder(book_).mergeFrom(value).buildPartial();
+          } else {
+            book_ = value;
+          }
+          onChanged();
+        } else {
+          bookBuilder_.mergeFrom(value);
+        }
+
+        return this;
+      }
+      /**
+       * <code>.erfan.codes.bookshop.proto.holder.Book book = 4;</code>
+       */
+      public Builder clearBook() {
+        if (bookBuilder_ == null) {
+          book_ = null;
+          onChanged();
+        } else {
+          book_ = null;
+          bookBuilder_ = null;
+        }
+
+        return this;
+      }
+      /**
+       * <code>.erfan.codes.bookshop.proto.holder.Book book = 4;</code>
+       */
+      public erfan.codes.bookshop.proto.holder.BookGlobalV1.Book.Builder getBookBuilder() {
+        
+        onChanged();
+        return getBookFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>.erfan.codes.bookshop.proto.holder.Book book = 4;</code>
+       */
+      public erfan.codes.bookshop.proto.holder.BookGlobalV1.BookOrBuilder getBookOrBuilder() {
+        if (bookBuilder_ != null) {
+          return bookBuilder_.getMessageOrBuilder();
+        } else {
+          return book_ == null ?
+              erfan.codes.bookshop.proto.holder.BookGlobalV1.Book.getDefaultInstance() : book_;
+        }
+      }
+      /**
+       * <code>.erfan.codes.bookshop.proto.holder.Book book = 4;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilderV3<
+          erfan.codes.bookshop.proto.holder.BookGlobalV1.Book, erfan.codes.bookshop.proto.holder.BookGlobalV1.Book.Builder, erfan.codes.bookshop.proto.holder.BookGlobalV1.BookOrBuilder> 
+          getBookFieldBuilder() {
+        if (bookBuilder_ == null) {
+          bookBuilder_ = new com.google.protobuf.SingleFieldBuilderV3<
+              erfan.codes.bookshop.proto.holder.BookGlobalV1.Book, erfan.codes.bookshop.proto.holder.BookGlobalV1.Book.Builder, erfan.codes.bookshop.proto.holder.BookGlobalV1.BookOrBuilder>(
+                  getBook(),
+                  getParentForChildren(),
+                  isClean());
+          book_ = null;
+        }
+        return bookBuilder_;
+      }
+      @java.lang.Override
+      public final Builder setUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.setUnknownFieldsProto3(unknownFields);
+      }
+
+      @java.lang.Override
+      public final Builder mergeUnknownFields(
+          final com.google.protobuf.UnknownFieldSet unknownFields) {
+        return super.mergeUnknownFields(unknownFields);
+      }
+
+
+      // @@protoc_insertion_point(builder_scope:erfan.codes.bookshop.proto.holder.GetBook)
+    }
+
+    // @@protoc_insertion_point(class_scope:erfan.codes.bookshop.proto.holder.GetBook)
+    private static final erfan.codes.bookshop.proto.holder.BookGlobalV1.GetBook DEFAULT_INSTANCE;
+    static {
+      DEFAULT_INSTANCE = new erfan.codes.bookshop.proto.holder.BookGlobalV1.GetBook();
+    }
+
+    public static erfan.codes.bookshop.proto.holder.BookGlobalV1.GetBook getDefaultInstance() {
+      return DEFAULT_INSTANCE;
+    }
+
+    private static final com.google.protobuf.Parser<GetBook>
+        PARSER = new com.google.protobuf.AbstractParser<GetBook>() {
+      @java.lang.Override
+      public GetBook parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new GetBook(input, extensionRegistry);
+      }
+    };
+
+    public static com.google.protobuf.Parser<GetBook> parser() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<GetBook> getParserForType() {
+      return PARSER;
+    }
+
+    @java.lang.Override
+    public erfan.codes.bookshop.proto.holder.BookGlobalV1.GetBook getDefaultInstanceForType() {
+      return DEFAULT_INSTANCE;
+    }
+
+  }
+
   public interface BookOrBuilder extends
       // @@protoc_insertion_point(interface_extends:erfan.codes.bookshop.proto.holder.Book)
       com.google.protobuf.MessageOrBuilder {
@@ -3018,6 +3888,11 @@ public final class BookGlobalV1 {
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
       internal_static_erfan_codes_bookshop_proto_holder_BookList_fieldAccessorTable;
   private static final com.google.protobuf.Descriptors.Descriptor
+    internal_static_erfan_codes_bookshop_proto_holder_GetBook_descriptor;
+  private static final 
+    com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
+      internal_static_erfan_codes_bookshop_proto_holder_GetBook_fieldAccessorTable;
+  private static final com.google.protobuf.Descriptors.Descriptor
     internal_static_erfan_codes_bookshop_proto_holder_Book_descriptor;
   private static final 
     com.google.protobuf.GeneratedMessageV3.FieldAccessorTable
@@ -3040,12 +3915,15 @@ public final class BookGlobalV1 {
       "op.proto.holder\"|\n\010BookList\022\016\n\006status\030\001 " +
       "\001(\005\022\014\n\004code\030\002 \001(\005\022\013\n\003msg\030\003 \001(\t\022\016\n\006userId" +
       "\030\004 \001(\003\0225\n\004data\030\005 \003(\0132\'.erfan.codes.books" +
-      "hop.proto.holder.Book\"b\n\004Book\022\n\n\002id\030\001 \001(" +
-      "\003\022\017\n\007barcode\030\002 \001(\t\022\016\n\006author\030\003 \001(\t\022\014\n\004na" +
-      "me\030\004 \001(\t\022\r\n\005price\030\005 \001(\003\022\020\n\010quantity\030\006 \001(" +
-      "\003\"k\n\007addBook\022\016\n\006status\030\001 \001(\005\022\014\n\004code\030\002 \001" +
-      "(\005\022\013\n\003msg\030\003 \001(\t\0225\n\004book\030\004 \001(\0132\'.erfan.co" +
-      "des.bookshop.proto.holder.Bookb\006proto3"
+      "hop.proto.holder.Book\"k\n\007GetBook\022\016\n\006stat" +
+      "us\030\001 \001(\005\022\014\n\004code\030\002 \001(\005\022\013\n\003msg\030\003 \001(\t\0225\n\004b" +
+      "ook\030\004 \001(\0132\'.erfan.codes.bookshop.proto.h" +
+      "older.Book\"b\n\004Book\022\n\n\002id\030\001 \001(\003\022\017\n\007barcod" +
+      "e\030\002 \001(\t\022\016\n\006author\030\003 \001(\t\022\014\n\004name\030\004 \001(\t\022\r\n" +
+      "\005price\030\005 \001(\003\022\020\n\010quantity\030\006 \001(\003\"k\n\007addBoo" +
+      "k\022\016\n\006status\030\001 \001(\005\022\014\n\004code\030\002 \001(\005\022\013\n\003msg\030\003" +
+      " \001(\t\0225\n\004book\030\004 \001(\0132\'.erfan.codes.booksho" +
+      "p.proto.holder.Bookb\006proto3"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
         new com.google.protobuf.Descriptors.FileDescriptor.    InternalDescriptorAssigner() {
@@ -3065,14 +3943,20 @@ public final class BookGlobalV1 {
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_erfan_codes_bookshop_proto_holder_BookList_descriptor,
         new java.lang.String[] { "Status", "Code", "Msg", "UserId", "Data", });
-    internal_static_erfan_codes_bookshop_proto_holder_Book_descriptor =
+    internal_static_erfan_codes_bookshop_proto_holder_GetBook_descriptor =
       getDescriptor().getMessageTypes().get(1);
+    internal_static_erfan_codes_bookshop_proto_holder_GetBook_fieldAccessorTable = new
+      com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
+        internal_static_erfan_codes_bookshop_proto_holder_GetBook_descriptor,
+        new java.lang.String[] { "Status", "Code", "Msg", "Book", });
+    internal_static_erfan_codes_bookshop_proto_holder_Book_descriptor =
+      getDescriptor().getMessageTypes().get(2);
     internal_static_erfan_codes_bookshop_proto_holder_Book_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_erfan_codes_bookshop_proto_holder_Book_descriptor,
         new java.lang.String[] { "Id", "Barcode", "Author", "Name", "Price", "Quantity", });
     internal_static_erfan_codes_bookshop_proto_holder_addBook_descriptor =
-      getDescriptor().getMessageTypes().get(2);
+      getDescriptor().getMessageTypes().get(3);
     internal_static_erfan_codes_bookshop_proto_holder_addBook_fieldAccessorTable = new
       com.google.protobuf.GeneratedMessageV3.FieldAccessorTable(
         internal_static_erfan_codes_bookshop_proto_holder_addBook_descriptor,
