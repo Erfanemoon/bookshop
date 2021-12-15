@@ -11,7 +11,8 @@ public enum Return_Status_Codes implements IReturn_Status_Codes {
     SESSION_NO_LONGER_VALID(403, "sessionId is no longer valid"),
     INVALID_BOOK_INFORMATION(400, "the book data is not valid , please check"),
     NO_BOOK_FOUND_FOR_SUBSCRIBER(200, "no book added by this subscriber"),
-    NO_BOOK_FOUND(400, "no book found with this id");
+    NO_BOOK_FOUND(400, "no book found with this id"),
+    INVALID_ADMIN_INFORMATION(400, "should enter admin information correctly!");
 
     private String messageKey;
     private int statusCode;

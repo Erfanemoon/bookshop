@@ -1,5 +1,6 @@
 package erfan.codes.bookshop.repositories;
 
+import erfan.codes.bookshop.models.UpdateBookModel;
 import erfan.codes.bookshop.proto.holder.BookGlobalV1;
 import erfan.codes.bookshop.repositories.entities.BookEntity;
 import erfan.codes.bookshop.repositories.hibernate.Criteria;
@@ -68,6 +69,19 @@ public class BookRepo extends ObjectRepo<BookEntity> {
         }
 
         return bookDTO;
+    }
+
+    @Transactional
+    public BookEntity updateBookInfo(UpdateBookModel updateBookModel) {
+
+        BookEntity book = new BookEntity();
+        book.setAuthor(updateBookModel.getAuthor());
+        book.setBarcode(updateBookModel.getBarcode());
+        book.setName(updateBookModel.getName());
+        book.setQuantity(updateBookModel.getQuantity());
+        book.setPrice(updateBookModel.getPrice());
+        book.setId(Long.valueOf(updateBookModel.getId()));
+        return this.iBookRepo.save(book);
     }
 
     public enum Fields {

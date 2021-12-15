@@ -1,5 +1,8 @@
 package erfan.codes.bookshop.repositories;
 
+import erfan.codes.bookshop.general.common.global.UserType;
+import erfan.codes.bookshop.models.RegisterAdminModel;
+import erfan.codes.bookshop.proto.holder.AdminGlobalV1;
 import erfan.codes.bookshop.proto.holder.BookGlobalV1;
 import erfan.codes.bookshop.proto.holder.SubscriberGlobalV1;
 import erfan.codes.bookshop.repositories.entities.BookEntity;
@@ -113,6 +116,35 @@ public class UserRepo extends ObjectRepo<UserEntity> {
 
         subscriberDTO = this.createUserBooksDTO(userEntity, userEntity.getBooks());
         return subscriberDTO;
+    }
+
+    public UserEntity createUserEntityTypeAdmin(RegisterAdminModel registerAdminModel) {
+
+        UserEntity admin = new UserEntity();
+        admin.setAddress(registerAdminModel.getAddress());
+        admin.setFirstname(registerAdminModel.getFirstName());
+        admin.setLastname(registerAdminModel.getLastName());
+        admin.setUsername(registerAdminModel.getUserName());
+        admin.setPassword(registerAdminModel.getPassword());
+        admin.setPhone(registerAdminModel.getPhone());
+        admin.setMailid(registerAdminModel.getEmail());
+        admin.setUsertype(UserType.ADMIN.getValue());
+
+        return admin;
+    }
+
+    public AdminGlobalV1.Admin.Builder createAdminDTO(UserEntity user) {
+
+        AdminGlobalV1.Admin.Builder adminDTO = AdminGlobalV1.Admin.newBuilder();
+        adminDTO.setAddress(user.getAddress());
+        adminDTO.setEmail(user.getMailid());
+        adminDTO.setFirstname(user.getFirstname());
+        adminDTO.setLastname(user.getLastname());
+        adminDTO.setPassword(user.getPassword());
+        adminDTO.setPhone(user.getPhone());
+        adminDTO.setId(user.getId());
+
+        return adminDTO;
     }
 
     public enum Fields {

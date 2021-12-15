@@ -36,7 +36,7 @@ public class UserEntity implements Serializable {
     private String mailid;
 
     @Column(name = "usertype")
-    private Integer usertype;
+    private String usertype;
 
     @ManyToMany(fetch = FetchType.LAZY,
             cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.DETACH, CascadeType.REFRESH})
@@ -71,11 +71,11 @@ public class UserEntity implements Serializable {
         this.books = books;
     }
 
-    public Integer getUsertype() {
+    public String getUsertype() {
         return usertype;
     }
 
-    public void setUsertype(Integer usertype) {
+    public void setUsertype(String usertype) {
         this.usertype = usertype;
     }
 
