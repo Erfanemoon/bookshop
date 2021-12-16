@@ -51,6 +51,4 @@ public class BookServicesApiV1 {
         BookGlobalV1.GetBook.Builder builder = this.iBookService.getBook(bookGetModel);
     }
 
-    //TODO user view books service
-    //TODO user buy books service
 }

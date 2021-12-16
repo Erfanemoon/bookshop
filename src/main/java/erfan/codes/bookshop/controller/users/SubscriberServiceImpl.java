@@ -1,10 +1,9 @@
 package erfan.codes.bookshop.controller.users;
 
 import erfan.codes.bookshop.enums.Return_Status_Codes;
-import erfan.codes.bookshop.general.General;
+import erfan.codes.bookshop.general.common.global.SessionType;
 import erfan.codes.bookshop.general.common.global.SessionUtil;
 import erfan.codes.bookshop.models.*;
-import erfan.codes.bookshop.proto.holder.BookGlobalV1;
 import erfan.codes.bookshop.proto.holder.Global;
 import erfan.codes.bookshop.proto.holder.SubscriberGlobalV1;
 import erfan.codes.bookshop.repositories.BookRepo;
@@ -42,7 +41,7 @@ public class SubscriberServiceImpl implements ISubscriberService {
 
         userRepo.save(userEntity);
         UserEntity userEntity1 = userRepo.findbyUsername(userEntity.getUsername()).get(0);
-        SessionUtil.saveSubscriberInfo(userEntity.getId());
+        SessionUtil.saveUserInfo(userEntity.getId(), SessionType.Subscribers.getValue());
         SubscriberGlobalV1.Subscriber.Builder dto = userRepo.createUserDTO(userEntity1);
 
         ret.setSubscriber(dto);

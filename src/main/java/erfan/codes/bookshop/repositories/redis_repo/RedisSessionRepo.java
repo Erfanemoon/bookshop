@@ -45,7 +45,6 @@ public class RedisSessionRepo implements IRedisSessionRepo {
 
     @Override
     public boolean expire(String key, long seconds) {
-        //TODO check this method I have doubt !!!
         return Boolean.TRUE.equals(redisTemplate.expire(key, seconds, TimeUnit.SECONDS));
     }
 

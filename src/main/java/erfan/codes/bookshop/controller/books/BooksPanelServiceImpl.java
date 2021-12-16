@@ -2,15 +2,19 @@ package erfan.codes.bookshop.controller.books;
 
 import erfan.codes.bookshop.enums.Return_Status_Codes;
 import erfan.codes.bookshop.models.AddBookModel;
+import erfan.codes.bookshop.models.DeleteBookModel;
 import erfan.codes.bookshop.models.ListBooksModel;
 import erfan.codes.bookshop.models.UpdateBookModel;
 import erfan.codes.bookshop.proto.holder.BookGlobalV1;
 import erfan.codes.bookshop.repositories.BookRepo;
 import erfan.codes.bookshop.repositories.entities.BookEntity;
+import erfan.codes.bookshop.repositories.entities.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
 @Component
 public class BooksPanelServiceImpl implements IBooksPanelService {
@@ -70,5 +74,26 @@ public class BooksPanelServiceImpl implements IBooksPanelService {
         ret.setBook(book);
 
         return updateBookModel.getOutput().returnResponseObject(ret, updateBookModel.getReturn_status_code());
+    }
+
+    @Override
+    public BookGlobalV1.GetBook.Builder deleteBook(DeleteBookModel deleteBookModel) {
+
+        BookGlobalV1.GetBook.Builder ret = BookGlobalV1.GetBook.newBuilder();
+        if (deleteBookModel.getReturn_status_code().getStatus() != Return_Status_Codes.OK_VALID_FORM.getStatus()) {
+            return deleteBookModel.getOutput().returnResponseObject(ret, deleteBookModel.getReturn_status_code());
+        }
+
+        Optional<BookEntity> optionalBook = this.bookRepo.findById(Long.valueOf(deleteBookModel.getBookId()));
+        BookEntity bookEntity = optionalBook.get();
+        Set<UserEntity> bookOwners = bookEntity.getBookOwners();
+        if (bookOwners.size() > 0) {
+            return deleteBookModel.getOutput().returnResponseObject(ret, Return_Status_Codes.SUBSCRIBER_BOOK_FORBIDDEN_DELETE);
+        }
+
+        BookGlobalV1.Book.Builder book = this.bookRepo.createBook(bookEntity);
+        ret.setBook(book);
+
+        return deleteBookModel.getOutput().returnResponseObject(ret, Return_Status_Codes.SC_OK_RESPONSE);
     }
 }

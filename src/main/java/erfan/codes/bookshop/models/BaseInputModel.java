@@ -12,6 +12,10 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Enumeration;
 
 public abstract class BaseInputModel {
 
@@ -27,6 +31,12 @@ public abstract class BaseInputModel {
         if (requestAttributes != null) {
             this.request = ((ServletRequestAttributes) requestAttributes).getRequest();
             this.response = ((ServletRequestAttributes) requestAttributes).getResponse();
+        }
+        if (this.request != null) {
+            Enumeration<String> headerNames = this.request.getHeaderNames();
+            ArrayList<String> headers = Collections.list(headerNames);
+            if (headers.contains("sessionId") || headers.contains("sessionid"))
+                this.sessionId = request.getHeader("sessionId");
         }
 
         this.output = new Output(this.request, this.response);

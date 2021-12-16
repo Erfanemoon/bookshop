@@ -170,7 +170,6 @@ public class Output {
         com.google.protobuf.Message.Builder builder = (com.google.protobuf.Message.Builder) t;
         builder.setField(builder.getDescriptorForType().findFieldByName("status"), status);
         builder.setField(builder.getDescriptorForType().findFieldByName("message"), msg);
-        //TODO check this line later
         return (T) builder;
     }
 }

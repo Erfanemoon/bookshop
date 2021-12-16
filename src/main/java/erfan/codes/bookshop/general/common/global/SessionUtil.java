@@ -4,11 +4,9 @@ import com.google.protobuf.InvalidProtocolBufferException;
 import erfan.codes.bookshop.general.General;
 import erfan.codes.bookshop.general.common.global.config.ConfigReader;
 import erfan.codes.bookshop.proto.holder.Global;
-import erfan.codes.bookshop.repositories.entities.UserEntity;
 import erfan.codes.bookshop.repositories.redis_repo.IRedisSessionRepo;
 import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.redis.cache.RedisCache;
 import org.springframework.data.redis.core.script.DigestUtils;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestAttributes;
@@ -19,7 +17,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Map;
 
 @Component
 public class SessionUtil {
@@ -65,7 +62,7 @@ public class SessionUtil {
         return null;
     }
 
-    public static Global.SessionModel saveSubscriberInfo(long userId) {
+    public static Global.SessionModel saveUserInfo(long userId, String type) {
 
         Global.SessionModel.Builder sessionModelBuilder = Global.SessionModel.newBuilder();
         Date now = new Date();
@@ -76,7 +73,10 @@ public class SessionUtil {
         long sessionExpireInSeconds = (sessionExpireDate.getTime() - now.getTime()) / 1000;
 
         sessionModelBuilder.setSessionId(sessionId);
-        sessionModelBuilder.setSessionType(SessionType.Subscribers.getValue());
+        if (type.equals(SessionType.Subscribers.getValue()))
+            sessionModelBuilder.setSessionType(SessionType.Subscribers.getValue());
+        else if (type.equals(SessionType.ADMINS.getValue()))
+            sessionModelBuilder.setSessionType(SessionType.ADMINS.getValue());
         sessionModelBuilder.setRegisterDate(now.getTime());
         sessionModelBuilder.setUserId(userId);
         sessionModelBuilder.setValidUntil(sessionExpireDate.getTime());
@@ -140,4 +140,6 @@ public class SessionUtil {
 //        }
         return SessionType.Subscribers.getValue() + ":sessions:" + sessionId;
     }
+
+
 }

@@ -4,6 +4,7 @@ import erfan.codes.bookshop.controller.books.BooksPanelServiceImpl;
 import erfan.codes.bookshop.controller.books.IBooksPanelService;
 import erfan.codes.bookshop.general.common.global.RM;
 import erfan.codes.bookshop.models.AddBookModel;
+import erfan.codes.bookshop.models.DeleteBookModel;
 import erfan.codes.bookshop.models.ListBooksModel;
 import erfan.codes.bookshop.models.UpdateBookModel;
 import erfan.codes.bookshop.proto.holder.BookGlobalV1;
@@ -65,5 +66,18 @@ public class BookServicesPanelV1 {
         BookGlobalV1.GetBook.Builder builder = this.booksPanelService.updateBook(updateBookModel);
         updateBookModel.getOutput().write(builder);
     }
-    //TODO remove book
+
+    @RM(
+            isSessionValidationRequired = true,
+            title = "apipanel_v1_book_delete",
+            protocolBufferReturn = BookGlobalV1.GetBook.class,
+            value = "/delete/",
+            method = {RequestMethod.POST},
+            produces = {MediaType.APPLICATION_JSON_VALUE}
+    )
+
+    public void deleteBook(DeleteBookModel deleteBookModel) {
+        BookGlobalV1.GetBook.Builder builder = this.booksPanelService.deleteBook(deleteBookModel);
+        deleteBookModel.getOutput().write(builder);
+    }
 }

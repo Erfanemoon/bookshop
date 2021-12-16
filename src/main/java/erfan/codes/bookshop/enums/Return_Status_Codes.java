@@ -12,7 +12,9 @@ public enum Return_Status_Codes implements IReturn_Status_Codes {
     INVALID_BOOK_INFORMATION(400, "the book data is not valid , please check"),
     NO_BOOK_FOUND_FOR_SUBSCRIBER(200, "no book added by this subscriber"),
     NO_BOOK_FOUND(400, "no book found with this id"),
-    INVALID_ADMIN_INFORMATION(400, "should enter admin information correctly!");
+    INVALID_ADMIN_INFORMATION(400, "should enter admin information correctly!"),
+    SUBSCRIBER_BOOK_FORBIDDEN_DELETE(403, "this specific book belongs to a subscriber"),
+    SC_OK_RESPONSE(200, "ok_response");
 
     private String messageKey;
     private int statusCode;

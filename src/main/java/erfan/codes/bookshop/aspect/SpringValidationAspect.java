@@ -48,13 +48,33 @@ public class SpringValidationAspect {
 
         if (rm != null) {
             if (rm.isSessionValidationRequired()) {
+                String sessionId;
                 if (uri.contains("/apipanel/")) {
-                    //TODO implement role session management for apipanel later on
-                    System.out.println("TODO session management ...");
 
+                    sessionId = SessionUtil.getSessionId(request);
+                    if (sessionId == null || sessionId.isEmpty()) {
+                        General.writeErrorOutput(Return_Status_Codes.SC_FORBIDDEN);
+                    } else {
+                        Global.SessionModel sessionModel = SessionUtil.getAndValidateSession(sessionId);
+                        if (sessionModel != null) {
+                            boolean hasAccess = checkSessionPrivileges(sessionModel, uri);
+                            if (!hasAccess)
+                                General.writeErrorOutput(Return_Status_Codes.SC_FORBIDDEN);
+
+                            long validUntil = sessionModel.getValidUntil();
+                            Date now = new Date();
+                            long l = now.getTime() / 1000;
+                            if (l > validUntil && !uri.contains("/login/")) {
+                                General.writeErrorOutput(Return_Status_Codes.SESSION_NO_LONGER_VALID);
+                            }
+                        } else
+                            General.writeErrorOutput(Return_Status_Codes.SC_FORBIDDEN);
+
+
+                    }
                 } else if (uri.contains("/api/")) {
 
-                    String sessionId = SessionUtil.getSessionId(request);
+                    sessionId = SessionUtil.getSessionId(request);
                     if (sessionId == null || sessionId.isEmpty()) {
                         General.writeErrorOutput(Return_Status_Codes.SC_FORBIDDEN);
                     } else {
@@ -84,7 +104,13 @@ public class SpringValidationAspect {
     private boolean checkSessionPrivileges(Global.SessionModel sessionModel, String uri) {
 
         String sessionType = sessionModel.getSessionType();
-        return !uri.contains("/apipanel/") || !sessionType.equals(SessionType.Subscribers.getValue());
+        if (uri.contains("/apipanel") && sessionType.equals(SessionType.ADMINS.getValue())) {
+
+            return true;
+        } else if (uri.contains("/api/") && sessionType.equals(SessionType.Subscribers.getValue())) {
+            return true;
+        }
+        return false;
     }
 
     private void validate(JoinPoint aJoinPoint) {
