@@ -4,7 +4,7 @@ package erfan.codes.bookshop.proto.holder;
 message BookList{
   int32 status = 1;
   int32 code = 2;
-  string msg = 3;
+  string message = 3;
   int64 userId = 4;
   repeated Book data = 5;
 }
@@ -12,7 +12,7 @@ message BookList{
 message GetBook{
   int32 status = 1;
   int32 code = 2;
-  string msg = 3;
+  string message = 3;
   Book book = 4;
 }
 
@@ -28,7 +28,7 @@ message Book {
 message addBook{
   int32 status = 1;
   int32 code = 2;
-  string msg = 3;
+  string message = 3;
   Book book = 4;
 }
 

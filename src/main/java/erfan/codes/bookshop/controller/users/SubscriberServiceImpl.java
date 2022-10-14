@@ -3,6 +3,7 @@ package erfan.codes.bookshop.controller.users;
 import erfan.codes.bookshop.enums.Return_Status_Codes;
 import erfan.codes.bookshop.general.common.global.SessionType;
 import erfan.codes.bookshop.general.common.global.SessionUtil;
+import erfan.codes.bookshop.general.common.global.UserType;
 import erfan.codes.bookshop.models.*;
 import erfan.codes.bookshop.proto.holder.Global;
 import erfan.codes.bookshop.proto.holder.SubscriberGlobalV1;
@@ -35,9 +36,10 @@ public class SubscriberServiceImpl implements ISubscriberService {
             return subscriberRegisterModel.getOutput().returnResponseObject(ret, subscriberRegisterModel.getReturn_status_code());
         }
 
+        //TODO create user method like admin in userRepo
         UserEntity userEntity = new UserEntity(subscriberRegisterModel.getUserName(), subscriberRegisterModel.getPassword(),
                 subscriberRegisterModel.getFirstName(), subscriberRegisterModel.getLastName(), subscriberRegisterModel.getAddress()
-                , subscriberRegisterModel.getPhone(), subscriberRegisterModel.getMailId());
+                , subscriberRegisterModel.getPhone(), subscriberRegisterModel.getMailId(), UserType.Subscribers.getValue());
 
         userRepo.save(userEntity);
         UserEntity userEntity1 = userRepo.findbyUsername(userEntity.getUsername()).get(0);

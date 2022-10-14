@@ -49,7 +49,7 @@ public class UserEntity implements Serializable {
     public UserEntity() {
     }
 
-    public UserEntity(String username, String password, String firstname, String lastname, String address, String phone, String mailid) {
+    public UserEntity(String username, String password, String firstname, String lastname, String address, String phone, String mailid, String userType) {
         this.username = username;
         this.password = password;
         this.firstname = firstname;
@@ -57,6 +57,7 @@ public class UserEntity implements Serializable {
         this.address = address;
         this.phone = phone;
         this.mailid = mailid;
+        this.usertype = userType;
     }
 
     public void addBook(BookEntity book) {

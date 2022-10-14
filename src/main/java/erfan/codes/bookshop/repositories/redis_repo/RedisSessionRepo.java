@@ -38,18 +38,10 @@ public class RedisSessionRepo implements IRedisSessionRepo {
         this.hashOperations.delete(hashRef, key);
     }
 
-//    @Override
-//    public void flushAll() {
-//        this.hashOperations.
-//    }
 
     @Override
     public boolean expire(String key, long seconds) {
         return Boolean.TRUE.equals(redisTemplate.expire(key, seconds, TimeUnit.SECONDS));
     }
 
-//    @Override
-//    public Long add(String key, String... values) {
-//        this.hashOperations.return null;
-//    }
 }

@@ -2,8 +2,8 @@ package erfan.codes.bookshop.repositories;
 
 import erfan.codes.bookshop.general.common.global.UserType;
 import erfan.codes.bookshop.models.RegisterAdminModel;
+import erfan.codes.bookshop.models.SubscriberRegisterModel;
 import erfan.codes.bookshop.proto.holder.AdminGlobalV1;
-import erfan.codes.bookshop.proto.holder.BookGlobalV1;
 import erfan.codes.bookshop.proto.holder.SubscriberGlobalV1;
 import erfan.codes.bookshop.repositories.entities.BookEntity;
 import erfan.codes.bookshop.repositories.entities.UserEntity;
@@ -13,7 +13,9 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
-import java.util.ArrayList;
+import javax.persistence.Entity;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaQuery;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
@@ -38,9 +40,11 @@ public class UserRepo extends ObjectRepo<UserEntity> {
     @Transactional
     public List<UserEntity> findbyUsername(String username) {
         this.criteria = new Criteria<>(UserEntity.class, this.getSession());
-        this.criteria.cQuery().select(criteria.root()).
+        CriteriaQuery<UserEntity> where = this.criteria.cQuery().select(criteria.root()).
                 where(criteria.cBuilder().equal(criteria.root().get(Fields.USERNAME.getValue()), username));
-        return criteria.query().getResultList();
+        TypedQuery<UserEntity> query = entityManager.createQuery(where);
+        return query.getResultList();
+        //return criteria.query().getResultList();
     }
 
     public SubscriberGlobalV1.Subscriber.Builder createUserDTO(UserEntity userEntity1) {
@@ -146,6 +150,12 @@ public class UserRepo extends ObjectRepo<UserEntity> {
 
         return adminDTO;
     }
+
+    //TODO complete this method later
+    /*public SubscriberGlobalV1.addSubscriber.Builder createUserEntityTypeUser(SubscriberRegisterModel subscriberRegisterModel) {
+        SubscriberGlobalV1.Subscriber.Builder dto = SubscriberGlobalV1.Subscriber.newBuilder();
+        dto.setId(subscriberRegisterModel.get)
+    }*/
 
     public enum Fields {
 

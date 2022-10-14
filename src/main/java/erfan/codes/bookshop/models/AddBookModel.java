@@ -40,7 +40,7 @@ public class AddBookModel extends BaseInputModel {
             this.return_status_code = Return_Status_Codes.OK_VALID_FORM;
 
         } else {
-            this.return_status_code = Return_Status_Codes.CHECK_BARCODE;
+            this.return_status_code = Return_Status_Codes.OK_VALID_FORM;
         }
 
     }

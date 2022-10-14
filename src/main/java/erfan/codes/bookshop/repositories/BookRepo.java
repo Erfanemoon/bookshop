@@ -38,6 +38,10 @@ public class BookRepo extends ObjectRepo<BookEntity> {
         return criteria.query().getResultList();
     }
 
+    public void deleteById(Long valueOf) {
+        this.iBookRepo.deleteById(valueOf);
+    }
+
     @Transactional
     public List<BookEntity> booksList() {
         return this.iBookRepo.findAll();
@@ -83,6 +87,7 @@ public class BookRepo extends ObjectRepo<BookEntity> {
         book.setId(Long.valueOf(updateBookModel.getId()));
         return this.iBookRepo.save(book);
     }
+
 
     public enum Fields {
         ID("id"),

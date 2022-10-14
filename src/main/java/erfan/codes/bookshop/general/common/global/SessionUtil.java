@@ -56,7 +56,7 @@ public class SessionUtil {
 //        if (sessionIds != null && sessionIds.length > 0)
 //            sessionId = sessionIds[0];
 
-        if (!sessionId.isEmpty())
+        if ( sessionId != null && !sessionId.isEmpty())
             return sessionId;
 
         return null;

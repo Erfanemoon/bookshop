@@ -91,6 +91,7 @@ public class BooksPanelServiceImpl implements IBooksPanelService {
             return deleteBookModel.getOutput().returnResponseObject(ret, Return_Status_Codes.SUBSCRIBER_BOOK_FORBIDDEN_DELETE);
         }
 
+        this.bookRepo.deleteById(Long.valueOf(deleteBookModel.getBookId()));
         BookGlobalV1.Book.Builder book = this.bookRepo.createBook(bookEntity);
         ret.setBook(book);
 
