@@ -37,6 +37,7 @@ public class SubscriberServiceImpl implements ISubscriberService {
         }
 
         //TODO create user method like admin in userRepo
+
         UserEntity userEntity = new UserEntity(subscriberRegisterModel.getUserName(), subscriberRegisterModel.getPassword(),
                 subscriberRegisterModel.getFirstName(), subscriberRegisterModel.getLastName(), subscriberRegisterModel.getAddress()
                 , subscriberRegisterModel.getPhone(), subscriberRegisterModel.getMailId(), UserType.Subscribers.getValue());

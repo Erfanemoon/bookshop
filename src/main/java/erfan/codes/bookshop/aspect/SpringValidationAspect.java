@@ -14,6 +14,7 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.reflect.MethodSignature;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.validation.BeanPropertyBindingResult;
 import org.springframework.validation.BindingResult;
@@ -21,6 +22,10 @@ import org.springframework.validation.Validator;
 import org.springframework.web.servlet.HandlerMapping;
 
 import javax.servlet.http.HttpServletRequest;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -31,6 +36,7 @@ public class SpringValidationAspect {
 
     @Autowired
     private SpringValidatorRegistry springValidatorRegistry;
+
 
     @Around("@annotation(erfan.codes.bookshop.general.common.global.RM)")
     public Object inputValidation(ProceedingJoinPoint aJoinPoint) throws Throwable {
@@ -96,6 +102,7 @@ public class SpringValidationAspect {
                 }
             }
             validate(aJoinPoint);
+            encryptPass(aJoinPoint);
             return aJoinPoint.proceed();
         }
         return null;
@@ -130,4 +137,40 @@ public class SpringValidationAspect {
             }
         }
     }
+
+    private void encryptPass(JoinPoint aJoinPoint) {
+
+        Method pm;
+        Object[] args = aJoinPoint.getArgs();
+        if (args != null) {
+            for (Object arg : args) {
+                if (arg instanceof BaseInputModel) {
+                    List<Field> fields = Arrays.asList(arg.getClass().getDeclaredFields());
+                    if (fields.size() > 0) {
+
+                        Field f = fields.stream().filter(field -> field.getName().equals("password") ||
+                                field.getName().equals("pass")).findAny().orElse(null);
+
+
+                        try {
+                            pm = arg.getClass().getMethod("getPassword");
+                            Object invoke = pm.invoke(arg);
+                            String pass = invoke.toString();
+                            BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+                            String encode = encoder.encode(pass);
+
+                            f.setAccessible(true);
+                            f.set(arg, encode);
+
+                        } catch (Exception e) {
+                            throw new RuntimeException(e);
+                        }
+
+                    }
+                }
+            }
+        }
+
+    }
+
 }

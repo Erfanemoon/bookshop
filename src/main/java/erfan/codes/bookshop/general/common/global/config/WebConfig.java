@@ -28,6 +28,7 @@ public class WebConfig {
         return methodInvokingFactoryBean;
     }
 
+
 //    @Bean
 //    public JedisConnectionFactory jedisConnectionFactory() {
 //        JedisConnectionFactory factory = new JedisConnectionFactory();
